@@ -20,9 +20,12 @@ class Recipe(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    show title as a readable string 
+# order recipes with updates first then second created
+
+    class Meta:
+        ordering = ["-updated_at","-created_at"]
+
+    # show title as a readable string 
 
     def __str__(self):
-        return self.title
-    
-
+        return f"The title of this recipe is {self.title}"
