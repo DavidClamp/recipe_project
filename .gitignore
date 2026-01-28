@@ -16,7 +16,7 @@ db.sqlite3
 
 # Environment variables
 .env
-
+env.py
 # IDEs
 .vscode/
 .idea/
