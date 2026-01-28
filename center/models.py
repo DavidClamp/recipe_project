@@ -8,7 +8,7 @@ class Recipe(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-    User, on_delete=models.CASCADE)
+    User, on_delete=models.CASCADE, related_name="recipe_posts")
     description = models.TextField(blank=True)
     ingredients = models.TextField()
     instructions = models.TextField()
@@ -20,7 +20,7 @@ class Recipe(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # show title as a readable string 
+    show title as a readable string 
 
     def __str__(self):
         return self.title
