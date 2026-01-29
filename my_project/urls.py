@@ -19,7 +19,8 @@ from django.urls import path, include
 # from center import views as index_views
 
 urlpatterns = [
-    path("", include("center.urls"), name="center-urls"),
-    # path('', index_views.index, name='index'),
     path('admin/', admin.site.urls),
+    path('summernote/', include('django_summernote.urls')),
+    path("", include("center.urls"), name="center-urls"),
+
 ]

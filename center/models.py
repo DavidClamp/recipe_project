@@ -9,7 +9,7 @@ class Recipe(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
     User, on_delete=models.CASCADE, related_name="recipe_posts")
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, null=True)
     ingredients = models.TextField()
     instructions = models.TextField()
 
