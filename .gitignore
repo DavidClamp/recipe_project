@@ -23,3 +23,6 @@ env.py
 
 # OS
 .DS_Store
+
+# data file to test datbse
+center/fixtures/
