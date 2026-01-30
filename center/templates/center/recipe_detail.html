@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+    <div class="container fluid">
+    <div class="row">
+        <!-- Featured Recipe Image -->
+        <div class="col-12 mb-4">
+            <div class="rounded overflow-hidden shadow-sm" style="max-height: 400px;">
+                <img src="{% static 'images/ice_cream.jpg' %}" 
+                     class="img-fluid w-100" 
+                     alt="{{ recipe.title }}"
+                     style="object-fit: cover; object-position: center; height: 400px;">
+            </div>
+        </div>
+        <!-- Recipe Header -->
+        <div class="col-12 text-center mb-5">
+            <h1 class="display-3 fw-bold">{{ recipe.title }}</h1>
+            <p class="text-muted">
+                Created by <strong>{{ recipe.author }}</strong> | 
+                Last updated: {{ recipe.updated_at|date:"M d, Y" }}
+            </p>
+            <hr class="w-25 mx-auto">
+        </div>
+
+        <!-- Sidebar: Description & Ingredients -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0 mb-4 bg-light">
+                <div class="card-body p-4">
+                    <h3 class="h5 fw-bold mb-3"><i class="fas fa-info-circle me-2"></i>About</h3>
+                    <div class="small text-secondary italic">
+                        {{ recipe.description|safe }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-4">
+                    <h3 class="h5 fw-bold mb-3"><i class="fas fa-shopping-basket me-2 text-danger"></i>Ingredients</h3>
+                    <div class="recipe-content">
+                        <!-- Safe filter renders Summernote lists correctly -->
+                        {{ recipe.ingredients|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content: Instructions -->
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="h4 fw-bold mb-4 border-bottom pb-2">Preparation Steps</h3>
+                    <div class="recipe-content fs-5 leading-relaxed">
+                        <!-- Safe filter renders Summernote steps correctly -->
+                        {{ recipe.instructions|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="row mt-5">
+        <div class="col text-center">
+            <a href="{% url 'home' %}" class="btn btn-outline-dark px-4">
+                <i class="fas fa-arrow-left me-2"></i>Back to Recipes
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
