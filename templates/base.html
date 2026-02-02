@@ -52,12 +52,10 @@
                         href="{% url 'home' %}">Home</a>
                 </li>
                 {% if user.is_authenticated %}
-                <li class="nav-item ms-lg-2">
-                   <a class="btn btn-sm btn-success text-white rounded-pill px-3" aria-current="page" 
-                        href="{% url 'recipe_add' %}">
-                <i class="fas fa-plus-circle me-1"></i> Add Recipe
-               </a>
-               </li>        
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == recipe_add %}active{% endif %}" aria-current="page" 
+                          href="{{ recipe_add }}"> Add Recipe </a>
+                </li> 
 
                <li class="nav-item">
 	               <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" 
