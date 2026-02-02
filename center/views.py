@@ -28,7 +28,7 @@ def recipe_detail(request, slug):
     :template:`center/recipe_detail.html`
     """
 
-    queryset = Recipe.objects.all().order_by("-created_at")
+    queryset = Recipe.objects.all()
     recipe = get_object_or_404(queryset, slug=slug)
 
     return render(
@@ -50,6 +50,7 @@ def add_recipe(request):
         recipe = Recipe.objects.create(
             title=title,
             slug=slugify(title),  # Converts "My Recipe" to "my-recipe"
+            author=request.user,
             description=description,
             ingredients=ingredients,
             instructions=instructions,
