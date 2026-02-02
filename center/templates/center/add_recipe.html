@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %} 
+
+{% block content %}
+<div class="container fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-sm border-0 p-4">
+                <h1 class="fw-bold mb-4">Add a Recipe</h1>
+                
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- Essential for Summernote Rich Text Editor -->
+                    {{ form.media }} 
+                    
+                    <!-- This renders your form with professional Bootstrap 5 styling -->
+                    {{ form|crispy }}
+                    
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-danger px-5">Save Recipe</button>
+                        <a href="{% url 'home' %}" class="btn btn-outline-secondary ms-2">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
