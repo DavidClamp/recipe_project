@@ -37,3 +37,15 @@ def recipe_detail(request, slug):
         "center/recipe_detail.html",
         {"recipe": recipe},
     )
+# Add Recipe View
+
+class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    form_class = RecipeForm
+    template_name = "center/add_recipe.html"
+    success_url = reverse_lazy('home')
+    success_message = "Your Recipe Twist was shared successfully!"
+
+    def form_valid(self, form):
+        # Automatically assign the logged-in user as the author
+        form.instance.author = self.request.user
+        return super().form_valid(form)
