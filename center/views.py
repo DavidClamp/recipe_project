@@ -1,17 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Recipe
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse_lazy
-from .forms import RecipeForm
+from django.utils.text import slugify
+from django.shortcuts import redirect
+
 
 
 # Create your views here.
 class RecipeList(generic.ListView):
     queryset = Recipe.objects.all()
     template_name = "center/index.html"
-    # context_object_name = "recipes"
+    context_object_name = "recipe_list"
     paginate_by = 6
 
 
@@ -29,7 +28,7 @@ def recipe_detail(request, slug):
     :template:`center/recipe_detail.html`
     """
 
-    queryset = Recipe.objects.all()
+    queryset = Recipe.objects.all().order_by("-created_at")
     recipe = get_object_or_404(queryset, slug=slug)
 
     return render(
@@ -37,15 +36,30 @@ def recipe_detail(request, slug):
         "center/recipe_detail.html",
         {"recipe": recipe},
     )
-# Add Recipe View
+# add a recipe 
 
-class AddRecipe(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
-    form_class = RecipeForm
-    template_name = "center/add_recipe.html"
-    success_url = reverse_lazy('home')
-    success_message = "Your Recipe Twist was shared successfully!"
+def add_recipe(request):
+    if request.method == "POST":
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        ingredients = request.POST.get("ingredients")
+        instructions = request.POST.get("instructions")
+      
 
-    def form_valid(self, form):
-        # Automatically assign the logged-in user as the author
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+        # Create the recipe and generate a slug manually
+        recipe = Recipe.objects.create(
+            title=title,
+            slug=slugify(title),  # Converts "My Recipe" to "my-recipe"
+            description=description,
+            ingredients=ingredients,
+            instructions=instructions,
+            status=1,
+        )
+        # Use redirect instead of render to prevent form resubmission on refresh
+        return redirect("recipe_detail", slug=recipe.slug)
+
+    return render(request, "center/add_recipe.html")
+
+
+
+

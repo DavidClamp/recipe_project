@@ -1,29 +1,38 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %} 
+{% extends 'base.html' %} 
+{% load static %}                       
+{% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container fluid">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card shadow-sm border-0 p-4">
-                <h1 class="fw-bold mb-4">Add a Recipe</h1>
-                
-                <form method="POST">
-                    {% csrf_token %}
-                    
-                    <!-- Essential for Summernote Rich Text Editor -->
-                    {{ form.media }} 
-                    
-                    <!-- This renders your form with professional Bootstrap 5 styling -->
-                    {{ form|crispy }}
-                    
-                    <div class="mt-4">
-                        <button type="submit" class="btn btn-danger px-5">Save Recipe</button>
-                        <a href="{% url 'home' %}" class="btn btn-outline-secondary ms-2">Cancel</a>
-                    </div>
-                </form>
-            </div>
+<div class="container mt-4">
+    <h2>Add a New Recipe</h2>
+    <form method="POST" class="card p-4 shadow-sm">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label class="form-label">Title:</label>
+            <input type="text" name="title" class="form-control" required placeholder="Enter recipe name">
         </div>
-    </div>
+
+        <div class="mb-3">
+            <label class="form-label">Description:</label>
+            <textarea name="description" class="form-control" rows="2"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Ingredients:</label>
+            <textarea name="ingredients" class="form-control" rows="4" placeholder="List ingredients here..."></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Instructions:</label>
+            <textarea name="instructions" class="form-control" rows="6" placeholder="Step by step guide..."></textarea>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Save Recipe</button>
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+    </form>
 </div>
 {% endblock %}
+
