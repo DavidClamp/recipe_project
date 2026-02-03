@@ -3,6 +3,7 @@ from django.views import generic
 from .models import Recipe
 from django.utils.text import slugify
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
 
 
