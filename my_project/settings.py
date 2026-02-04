@@ -120,8 +120,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-# Instant logout
-ACCOUNT_LOGOUT_ON_GET = True
+# Instant logout changed back to false
+ACCOUNT_LOGOUT_ON_GET = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
