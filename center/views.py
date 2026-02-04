@@ -43,13 +43,14 @@ def recipe_detail(request, slug):
 
 @login_required
 def add_recipe(request):
+
+
     if request.method == "POST":
         title = request.POST.get("title")
         description = request.POST.get("description")
         ingredients = request.POST.get("ingredients")
         instructions = request.POST.get("instructions")
       
-
         # Create the recipe and generate a slug manually
         recipe = Recipe.objects.create(
             title=title,
