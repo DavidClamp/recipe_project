@@ -69,7 +69,7 @@ def add_recipe(request):
 
 @login_required
 def edit_recipe(request, slug):
-    #Fetch the existing recipe
+    # Fetch the existing recipe
     recipe = get_object_or_404(Recipe, slug=slug)
 
     if request.method == "POST":
@@ -85,26 +85,18 @@ def edit_recipe(request, slug):
         messages.success(request, f'Recipe "{recipe.title}" updated successfully!')
         return redirect("recipe_detail", slug=recipe.slug)
 
-    # 6. Render the form pre-filled with existing recipe data
+    # Render the form pre-filled with existing recipe data
     return render(request, "center/edit_recipe.html", {"recipe": recipe})
 
 @login_required
 def delete_recipe(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
-    
-    # Check if the user owns the recipe
-    if recipe.author != request.user:
-        messages.error(request, "You can't delete someone else's recipe.")
-        return redirect('recipe_detail', slug=slug)
-
+        
     if request.method == "POST":
         recipe.delete()
         messages.success(request, "Recipe deleted successfully!")
         return redirect("home")
 
     # Render a simple confirmation page for GET requests
-    return render(request, "center/delete_confirm.html", {"recipe": recipe})
-
-
-
+    return render(request, "center/delete_recipe.html", {"recipe": recipe})
 

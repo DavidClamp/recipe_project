@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center card shadow p-5 border-danger">
+            <h2 class="text-danger mb-4"><i class="fas fa-exclamation-triangle"></i> Delete Recipe?</h2>
+            <p>Are you sure you want to delete <strong>{{ recipe.title }}</strong>? This cannot be undone.</p>
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger px-4 me-2">Yes, Delete</button>
+                <a href="{% url 'recipe_detail' recipe.slug %}" class="btn btn-outline-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
