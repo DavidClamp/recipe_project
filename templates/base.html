@@ -5,8 +5,7 @@
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 {% url 'recipe_add' as recipe_add %}
-{% url 'recipe_edit' as recipe_edit %}
-{% url 'recipe_delete' as recipe_delete %}
+
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -58,17 +57,7 @@
                     <a class="nav-link {% if request.path == recipe_add %}active{% endif %}" aria-current="page" 
                           href="{{ recipe_add }}"> Add Recipe </a>
                 </li>
-                 {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link {% if request.path == recipe_edit %}active{% endif %}" aria-current="page" 
-                          href="{{ recipe_edit }}"> Edit Recipe </a>
-                </li> 
-                 {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link {% if request.path == recipe_delete %}active{% endif %}" aria-current="page" 
-                          href="{{ recipe_recipe }}"> Delete Recipe </a>
-                </li> 
-
+                
                <li class="nav-item">
 	               <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" 
                        href="{% url 'account_logout' %}">Logout</a>
