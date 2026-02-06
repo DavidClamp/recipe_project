@@ -4,14 +4,14 @@
 
     <div class="container fluid">
     <div class="row">
-        <!-- Featured Recipe Image -->
+        <!-- Featured Recipe Image
         <div class="col-12 mb-4">
-            <div class="rounded overflow-hidden shadow-sm" style="max-height: 400px;">
+            <div class="rounded overflow-hidden shadow-sm" style="max-height: 200px;">
                 <img src="{% static 'images/ice_cream.jpg' %}" 
                      class="img-fluid w-100" 
                      alt="{{ recipe.title }}"
                      style="object-fit: cover; object-position: center; height: 400px;">
-            </div>
+            </div> -->
         </div>
         <!-- Recipe Header -->
         <div class="col-12 text-center mb-5">
@@ -39,13 +39,8 @@
         </div>
     </div>
 </div>
+
 {% endif %}
-
-
-
-
-
-
 
         <!-- Sidebar: Description & Ingredients -->
         <div class="col-lg-4">
@@ -84,7 +79,7 @@
     </div>
 
     <!-- Back Button -->
-    <div class="row mt-5">
+    <div class="row mb-2 mt-4">
         <div class="col text-center">
             <a href="{% url 'home' %}" class="btn btn-outline-dark px-4">
                 <i class="fas fa-arrow-left me-2"></i>Back to Recipes

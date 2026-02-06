@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<!-- index.html content starts here -->
+ <!-- Content here -->
 
 <div class="container fluid">
     <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -16,7 +16,6 @@
                     
                     <p class="small text-muted mb-2">By {{ recipe.author }}</p>
                     
-                    <!-- Summernote Description: REQUIRES |safe and |truncatewords -->
                     <div class="card-text text-secondary mb-3">
                         {{ recipe.description|safe|truncatewords:15 }}
                     </div>
@@ -55,7 +54,7 @@
     {% endif %}
 </div>
 
-<!-- index.html content ends here -->
+<!-- Content end -->
 {% endblock %}
 {% block copyright %}
     Copyright 2026 David Clamp

@@ -44,8 +44,8 @@ def recipe_detail(request, slug):
 @login_required
 def add_recipe(request):
 
-
     if request.method == "POST":
+        
         title = request.POST.get("title")
         description = request.POST.get("description")
         ingredients = request.POST.get("ingredients")
