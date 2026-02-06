@@ -146,7 +146,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Add code for django and bootstrap for any naming conflict 
+# Add code for django and bootstrap for any naming conflict
+
 from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {
