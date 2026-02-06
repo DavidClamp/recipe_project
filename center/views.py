@@ -45,7 +45,7 @@ def recipe_detail(request, slug):
 def add_recipe(request):
 
     if request.method == "POST":
-        
+
         title = request.POST.get("title")
         description = request.POST.get("description")
         ingredients = request.POST.get("ingredients")
@@ -62,6 +62,7 @@ def add_recipe(request):
             status=1,
         )
         # Use redirect instead of render to prevent form resubmission on refresh
+        messages.success(request, f'Recipe "{title}" created successfully!')
         return redirect("recipe_detail", slug=recipe.slug)
 
     return render(request, "center/add_recipe.html")
