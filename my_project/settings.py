@@ -24,7 +24,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.herokuapp.com',
                  '127.0.0.1',
@@ -118,18 +118,17 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-# Force Username-only authentication
-ACCOUNT_USER_MODEL_EMAIL_FIELD = None
+
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
-ACCOUNT_EMAIL_REQUIRED = False
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email' 
 
-# Instant logout changed back to false
-ACCOUNT_LOGOUT_ON_GET = False
+# 2. Make Email VISIBLE but NOT MANDATORY
+ACCOUNT_EMAIL_REQUIRED = False   
+ACCOUNT_EMAIL_VERIFICATION = 'none'  
+ACCOUNT_UNIQUE_EMAIL = False              
 
-# Add these two to fully scrub email "ghosts"
-ACCOUNT_UNIQUE_EMAIL = False
-ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
+# automatically show Username, Email (optional), and Passwords.
+ACCOUNT_SIGNUP_FIELDS = [] 
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
