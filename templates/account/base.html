@@ -1,43 +1,62 @@
+{% extends "base.html" %} 
 {% load i18n %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block head_title %}{% endblock head_title %}</title>
-    {% block extra_head %}
-    {% endblock extra_head %}
-  </head>
-  <body>
-    {% block body %}
+    <title>{% block head_title %}Recipe App{% endblock %}</title>
+    
+    <link href="https://cdn.jsdelivr.net" rel="stylesheet" crossorigin="anonymous">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-light">
 
-    {% if messages %}
-    <div>
-      <strong>{% trans "Messages:" %}</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">🍲 My Recipes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'recipe_create' %}">Add Recipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_email' %}">Settings</a></li>
+                        <li class="nav-item">
+                            <form method="post" action="{% url 'account_logout' %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="nav-link btn btn-link text-decoration-none">Sign Out</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Sign In</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-primary text-white ms-lg-2" href="{% url 'account_signup' %}">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <div>
-      <strong>{% trans "Menu:" %}</strong>
-      <ul>
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">{% trans "Change Email" %}</a></li>
-        <li><a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a></li>
-        {% else %}
-        <li><a href="{% url 'account_login' %}">{% trans "Sign In" %}</a></li>
-        <li><a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
         {% endif %}
-      </ul>
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
     </div>
-    {% block content %}
-    {% endblock content %}
-    {% endblock body %}
-    {% block extra_body %}
-    {% endblock extra_body %}
-  </body>
+
+    <script src="https://cdn.jsdelivr.net" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    {% block extra_body %}{% endblock %}
+</body>
 </html>
