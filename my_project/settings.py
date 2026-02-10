@@ -123,12 +123,13 @@ ACCOUNT_USER_MODEL_EMAIL_FIELD = None
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-ACCOUNT_USER_MODEL_EMAIL_FIELD = None
-
-
 
 # Instant logout changed back to false
 ACCOUNT_LOGOUT_ON_GET = False
+
+# Add these two to fully scrub email "ghosts"
+ACCOUNT_UNIQUE_EMAIL = False
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
