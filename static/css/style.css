@@ -52,7 +52,7 @@ body, .main-bg {
 }
 
 /* 6. Footer */
-dark-bg {
+.dark-bg {
     background-color: #f8f9fa; 
     border-top: 1px solid #dee2e6;
 }
