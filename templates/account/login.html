@@ -1,45 +1,36 @@
 {% extends "account/base.html" %}
 {% load i18n %}
-{% load account socialaccount %}
-<!--Load Crispy -->
-{% load crispy_forms_tags %} 
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-sm p-4">
-                <h1 class="text-center">{% trans "Sign In" %}</h1>
-
-                {% get_providers as socialaccount_providers %}
-                {% if socialaccount_providers %}
-                    <!-- Social Login Section -->
-                    <div class="socialaccount_ballot text-center my-3">
-                        <ul class="list-unstyled">
-                            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-                        </ul>
-                        <div class="login-or border-bottom mb-3"><span>{% trans 'or' %}</span></div>
-                    </div>
-                {% endif %}
-
-                <form class="login" method="POST" action="{% url 'account_login' %}">
-                    {% csrf_token %}
-                    {{ form|crispy }} 
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5">
+                    <h1 class="text-center mb-4"> {% trans "Sign In" %}</h1>
                     
-                    {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                    {% endif %}
+                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        
+                        <!-- This filter transforms the plain list into BS5 inputs -->
+                        {{ form|crispy }}
 
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-primary btn-block primaryAction" type="submit">{% trans "Sign In" %}</button>
-                    </div>
+                        <div class="d-grid gap-2 mt-4">
+                            <button class="btn btn-primary btn-lg shadow-sm" type="submit">
+                                {% trans "Sign In" %}
+                            </button>
+                        </div>
+                    </form>
                     
                     <div class="text-center mt-3">
-                        <a class="secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                        <a class="small text-secondary text-decoration-none" href="{% url 'account_reset_password' %}">
+                            {% trans "Forgot Password?" %}
+                        </a>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock content %}
+{% endblock %}
