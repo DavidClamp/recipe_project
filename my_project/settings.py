@@ -24,11 +24,14 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# 1. Cleaner DEBUG check to prevent accidental True in production
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['.herokuapp.com',
-                 '127.0.0.1',
-                 'localhost',]
+ALLOWED_HOSTS = [
+    '.herokuapp.com',
+    '127.0.0.1',
+    'localhost',
+]
 
 # Application definition
 
@@ -43,7 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-     'crispy_forms',
+    'crispy_forms',
     'crispy_bootstrap5',
     'django_summernote',
     'center',
@@ -154,10 +157,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Add code for django and bootstrap for any naming conflict
-
+# Consolidated Message Tags for full Bootstrap support
 from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {
+    messages.DEBUG: 'secondary',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
     messages.ERROR: 'danger',
 }

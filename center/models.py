@@ -5,10 +5,10 @@ STATUS = ((0, "Draft"), (1, "Finished"))
 
 # Create your models here.
 class Recipe(models.Model):
+
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(
-    User, on_delete=models.CASCADE, related_name="recipe_posts")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_posts")
     description = models.TextField(blank=True, null=True)
     ingredients = models.TextField()
     instructions = models.TextField()
@@ -23,9 +23,8 @@ class Recipe(models.Model):
 # order recipes with updates first then second created
 
     class Meta:
-        ordering = ["-updated_at","-created_at"]
+        ordering = ["-updated_at", "-created_at"]
 
-    # show title as a readable string 
-
+    # show title as a readable string
     def __str__(self):
         return f"The title of this recipe is {self.title}"
