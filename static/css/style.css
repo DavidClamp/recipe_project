@@ -1,6 +1,8 @@
 /* 1. Global & Backgrounds */
-body, .main-bg {
-    background-color: #F9FAFC; /* Your clean off-white */
+body,
+.main-bg {
+    background-color: #F9FAFC;
+    /* Your clean off-white */
     font-family: 'Lato', sans-serif;
     color: #333;
 }
@@ -9,11 +11,11 @@ body, .main-bg {
 .brand {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #2D3436; 
+    color: #2D3436;
 }
 
 .red-o {
-    color: #E84610; 
+    color: #E84610;
 }
 
 /* 3. Cards  */
@@ -26,7 +28,7 @@ body, .main-bg {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* 4. Images */
@@ -53,7 +55,7 @@ body, .main-bg {
 
 /* 6. Footer */
 .dark-bg {
-    background-color: #f8f9fa; 
+    background-color: #f8f9fa;
     border-top: 1px solid #dee2e6;
 }
 
@@ -70,7 +72,7 @@ footer p {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 5px 12px;
     border-radius: 20px;
-    left: auto; 
+    left: auto;
 }
 
 .author {
@@ -81,7 +83,8 @@ footer p {
 }
 
 /* 8. Text Links */
-.recipe-link, .post-link {
+.recipe-link,
+.post-link {
     text-decoration: none;
     color: inherit;
 }
@@ -89,7 +92,7 @@ footer p {
 /* Custom Pagination Styling */
 .pagination .page-link {
     background-color: #ffffff;
-    color: #E84610; 
+    color: #E84610;
     border: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -116,8 +119,10 @@ footer p {
     font-weight: 400;
     align-self: center;
 }
+
 /* Style Crispy Form Inputs */
-.form-control, .form-select {
+.form-control,
+.form-select {
     border-radius: 10px;
     border: 1px solid #e2e8f0;
     padding: 0.75rem;
@@ -127,9 +132,10 @@ footer p {
     border-color: #E84610;
     box-shadow: 0 0 0 0.25rem rgba(232, 70, 16, 0.1);
 }
-    
+
 /* Override the default Bootstrap blue for all primary buttons */
-.btn-primary, .btn-auth {
+.btn-primary,
+.btn-auth {
     background-color: #E84610;
     border-color: #E84610;
     color: #ffffff;
@@ -137,13 +143,10 @@ footer p {
 }
 
 /* Hover state */
-.btn-primary:hover, .btn-auth:hover {
+.btn-primary:hover,
+.btn-auth:hover {
     background-color: #c93d0e;
     border-color: #c93d0e;
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(232, 70, 16, 0.2);
-} 
-
- 
-
-
+}
