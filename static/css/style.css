@@ -127,5 +127,23 @@ footer p {
     border-color: #E84610;
     box-shadow: 0 0 0 0.25rem rgba(232, 70, 16, 0.1);
 }
+    
+/* Override the default Bootstrap blue for all primary buttons */
+.btn-primary, .btn-auth {
+    background-color: #E84610;
+    border-color: #E84610;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* Hover state */
+.btn-primary:hover, .btn-auth:hover {
+    background-color: #c93d0e;
+    border-color: #c93d0e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(232, 70, 16, 0.2);
+} 
+
+ 
 
 
