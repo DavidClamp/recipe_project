@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<div class="container text-center vh-100 d-flex flex-column justify-content-center">
+<!-- Removed vh-100 to prevent double scrolling with your base.html footer -->
+<div class="container text-center d-flex flex-column justify-content-center align-items-center" style="min-height: 60vh;">
     <h1 class="display-1 brand"><span class="red-o">404</span></h1>
-    <h2 class="mb-4">Oops! This recipe is missing.</h2>
-    <p class="text-muted">We couldn't find the page you're looking for. It might have been deleted or moved.</p>
+    <h2 class="mb-4 fw-bold">Oops! This recipe is missing.</h2>
+    <p class="text-muted mx-auto" style="max-width: 500px;">
+        We couldn't find the page you're looking for. It might have been deleted, moved, or the chef is still prepping it!
+    </p>
     <div class="mt-4">
-        <a href="{% url 'home' %}" class="btn btn-primary btn-auth">Back to Home</a>
+        <!-- Uses your .btn-primary / .btn-auth from style.css -->
+        <a href="{% url 'home' %}" class="btn btn-primary btn-auth px-5 shadow-sm">
+            Back to Home
+        </a>
     </div>
 </div>
 {% endblock %}
