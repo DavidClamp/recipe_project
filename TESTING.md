@@ -3,102 +3,41 @@
 > [!NOTE]  
 > Return back to the [README.md](README.md) file.
 
-⚠️ INSTRUCTIONS ⚠️
 
-In the following sections, you need to convince the assessors that you have conducted enough manual testing to legitimately believe that the site works well. Essentially, in this part, you should go over all of your project's features, and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
-
-⚠️ --- END --- ⚠️
 
 ## Code Validation
 
-⚠️ INSTRUCTIONS ⚠️
+- I have used the recommended W3C HTML Validator, W3C CSS Jigsaw Validator, and PEP 8 CI Linter to validate all of my project code.
 
-Use the space below to discuss code validation for all of your own code files (*where applicable*). You are not required to validate external libraries/frameworks.
-
-**MANDATORY**: You must provide a screenshot for each file you validate.
-
-**PRO TIP**: Where possible, always validate the live URL pages/files, not your local code using copy/paste. There could be subtle/hidden differences.
-
-⚠️ --- END --- ⚠️
 
 ### HTML
 
-⚠️ INSTRUCTIONS ⚠️
+For pages requiring authentication (CRUD operations), I followed the View Page Source method:
 
-1. [*recommended*] If you are using the live deployed site URLs, validate using this link: https://validator.w3.org/#validate_by_uri
-2. Otherwise, if you are copying/pasting your HTML code manually, use this link: https://validator.w3.org/#validate_by_input
+1. Navigated to the live Heroku page.
+2. Copied the compiled source code (CTRL+U).
+3. Validated by Direct Input to bypass Jinja2 syntax errors.
 
-It's recommended to validate the live pages (all of them) using the deployed URL. This will give you a custom URL as well, which you can use below on your testing documentation. It makes it easier to return back to a page for validating it again in the future. The URL will look something like this:
-
-- https://validator.w3.org/nu/?doc=https://DavidClamp.github.io/recipe_project/index.html
-
-⚠️ --- END --- ⚠️
-
-🛑 IMPORTANT 🛑
-
-RE: Python/Jinja syntax in HTML
-
-Python projects that use Jinja syntax, such as `{% for loops %}`, `{% url 'home' %}`, and `{{ variable|filter }}` will not validate properly if you're copying/pasting into the HTML validator.
-
-In order to properly validate these types of files, it's recommended to [validate by uri](https://validator.w3.org/#validate_by_uri) from the deployed Heroku pages.
-
-Unfortunately, pages that require a user to be "logged-in" and authenticated (CRUD functionality) will not work using this method, due to the fact that the HTML Validator (W3C) doesn't have access to login to an account on your project. In order to properly validate HTML pages with Jinja syntax for authenticated pages, follow these steps:
-
-- Navigate to the deployed pages which require authentication.
-- Right-click anywhere on the page, and select **View Page Source** (usually `CTRL+U` or `⌘+U` on Mac).
-- This will display the entire "compiled" code, without any Jinja syntax.
-- Copy everything, and use the [validate by input](https://validator.w3.org/#validate_by_input) method.
-- Repeat this process for every page that requires a user to be logged-in/authenticated (e.g.: CRUD functionality).
-
-🛑 ---- END --- 🛑
-
-I have used the recommended [HTML W3C Validator](https://validator.w3.org) to validate all of my HTML files.
-
-| Directory | File | URL | Screenshot | Notes |
+Directory|	File	|URL (Live/Source)|	Screenshot|	Notes|
 | --- | --- | --- | --- | --- |
-| center | [add_recipe.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/add_recipe.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-center-add_recipe.png) | ⚠️ Notes (if applicable) |
-| center | [delete_recipe.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/delete_recipe.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-center-delete_recipe.png) | ⚠️ Notes (if applicable) |
-| center | [edit_recipe.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/edit_recipe.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-center-edit_recipe.png) | ⚠️ Notes (if applicable) |
-| center | [home.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/home.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-center-home.png) | ⚠️ Notes (if applicable) |
-| center | [index.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/index.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-center-index.png) | ⚠️ Notes (if applicable) |
-| center | [recipe_detail.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/recipe_detail.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-center-recipe_detail.png) | ⚠️ Notes (if applicable) |
-| templates | [404.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/404.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-404.png) | ⚠️ Notes (if applicable) |
-| templates | [test_403_csrf.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/tests/test_403_csrf.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-test_403_csrf.png) | ⚠️ Notes (if applicable) |
-| templates | [email_confirm.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/email_confirm.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-email_confirm.png) | ⚠️ Notes (if applicable) |
-| templates | [login.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/login.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-login.png) | ⚠️ Notes (if applicable) |
-| templates | [logout.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/logout.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-logout.png) | ⚠️ Notes (if applicable) |
-| templates | [password_reset.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-password_reset.png) | ⚠️ Notes (if applicable) |
-| templates | [password_reset_done.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset_done.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-password_reset_done.png) | ⚠️ Notes (if applicable) |
-| templates | [password_reset_from_key.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset_from_key.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-password_reset_from_key.png) | ⚠️ Notes (if applicable) |
-| templates | [password_reset_from_key_done.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset_from_key_done.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-password_reset_from_key_done.png) | ⚠️ Notes (if applicable) |
-| templates | [signup.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/signup.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-signup.png) | ⚠️ Notes (if applicable) |
-| templates | [verification_sent.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/verification_sent.html) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/html-templates-verification_sent.png) | ⚠️ Notes (if applicable) |
+|center	|	index.html|	W3C Link||		Pass|
+|center|	recipe_detail.html	|W3C Link||		Pass: Fixed H1->H3 skip to H1->H2|
+|center|	add_recipe.html|	[Direct Input]||		Pass|
+|center|	edit_recipe.html|	[Direct Input]||		Pass|
+|center|delete_recipe.html|	[Direct Input]||		Pass|
+|templates|	404.html|	[Direct Input]||		Pass|
+|account|	login.html|	W3C Link||		Pass|
+|account|	signup.html|	W3C Link||		Pass|
+
 
 
 ### CSS
 
-⚠️ INSTRUCTIONS ⚠️
-
-1. [*recommended*] If you are using the live deployed site, use this link: https://jigsaw.w3.org/css-validator/#validate_by_uri
-2. If you are copying/pasting your CSS code, use this link: https://jigsaw.w3.org/css-validator/#validate_by_input
-
-It's recommended to validate the live site for your primary CSS file on the deployed URL. This will give you a custom URL as well, which you can use below on your testing documentation. It makes it easier to return back to a page for validating it again in the future. The URL will look something like this:
-
-- https://jigsaw.w3.org/css-validator/validator?uri=https://recipe-twist-app-af6a25c38738.herokuapp.com
-
-If you have additional/multiple CSS files, then individual "[validation by input](https://jigsaw.w3.org/css-validator/#validate_by_input)" is recommended for the extra CSS files.
-
-**IMPORTANT**: Third-Party tools
-
-If you're using external libraries/frameworks (e.g: Bootstrap, Materialize, Font Awesome, etc.), then sometimes the tool will attempt to also validate these, even though it's not part of your own actual code that you wrote. You are not required to validate the external libraries or frameworks!
-
-⚠️ --- END --- ⚠️
-
-I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate all of my CSS files.
+My custom styles were validated using the W3C Jigsaw Validator.
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| static | [style.css](https://github.com/DavidClamp/recipe_project/blob/main/static/css/style.css) | ⚠️ Link (if applicable) | ![screenshot](documentation/validation/css-static-style.png) | ⚠️ Notes (if applicable) |
+| center/css| style.css|Jigsaw Link||Pass: 0 Errors
 
 
 ### JavaScript
@@ -127,58 +66,17 @@ I have used the recommended [JShint Validator](https://jshint.com) to validate a
 
 
 
-### Python
+### Python (PEP 8)
 
-⚠️ INSTRUCTIONS ⚠️
+All custom Python files were validated using the Code Institute CI Python Linter.
 
-The [CI Python Linter](https://pep8ci.herokuapp.com) can be used two different ways.
+| Directory | File | Screenshot | Notes |
+| --- | --- | --- | --- | 
+|center|	views.py||	Pass: No E302/E501 errors|
+|center|models.py||		Pass: Corrected blank lines|
+|center|	forms.py||		Pass|
+|my_project|	settings.py||		Pass: Long lines broken for PEP 8|
 
-- Copy/Paste your Python code directly into the linter.
-- As an API, using the "raw" URL appended to the linter URL.
-    - To find the "raw" URL, navigate to your file directly on the GitHub repo.
-    - On that page, GitHub provides a button on the right called "Raw" that you can click.
-    - From that new page, copy the full URL, and paste it after the CI Python Linter URL (with a `/` separator).
-
-It's recommended to validate each file using the API URL. This will give you a custom URL which you can use on your testing documentation. It makes it easier to return back to a file for validating it again in the future. Use the steps above to generate your own custom URLs for each Python file.
-
-**IMPORTANT**: `E501 line too long` errors
-
-You must strive to fix all Python lines that are too long (>80 characters). In rare cases where you cannot break the lines [*without breaking the functionality*], adding "`  # noqa`" (*NO Quality Assurance*) to the end of those lines will ignore linting validation. Do not use "`  # noqa`" all over your project just to clear down validation errors! This can still cause a project to fail, for failing to fix actual PEP8 validation errors.
-
-Sometimes variables can get too long, or excessive `if/else` conditional statements. These are acceptable instances to use the "`  # noqa`" comment.
-
-When trying to fix "line too long" errors, try to avoid using `/` to split lines. A better approach would be to use any type of opening bracket, and hit `<Enter>` just after that. Any opening bracket type will work: `(`, `[`, `{`. By using an opening bracket, Python knows where to appropriately indent the next line of code, without having to *guess* for yourself and attempt to "tab" to the correct indentation level.
-
-⚠️ --- END --- ⚠️
-
-🛑 IMPORTANT 🛑
-
-**IMPORTANT**: Django settings
-
-The Django `settings.py` file comes with 4 lines that are quite long, and will throw the `E501 line too long` error. This is default behavior, but can be fixed by adding the "`  # noqa`" comment at the end of those lines.
-
-```python
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",  # noqa
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",  # noqa
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",  # noqa
-    },
-]
-```
-
-**IMPORTANT**: *migration* and *pycache* files
-
-You do not have to validate files from the `migrations/` or `pycache/` folders! Ignore these `.py` files, and validate just the files that you've created or modified.
-
-🛑 --- END --- 🛑
 
 I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com) to validate all of my Python files.
 
