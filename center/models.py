@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 STATUS = ((0, "Draft"), (1, "Finished"))
 
+
 class Recipe(models.Model):
     """
     Model representing a recipe post.
