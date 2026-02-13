@@ -60,7 +60,7 @@ body, .main-bg {
     color: #ffffff;
 }
 
-/* 5. Form Styling (Crispy Forms & Summernote) */
+/* 5. Form Styling (Crispy Forms & Summernote) */ 
 .form-control, .form-select {
     border-radius: 10px;
     border: 1px solid #e2e8f0;
