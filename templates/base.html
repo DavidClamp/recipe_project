@@ -4,34 +4,40 @@
 <html class="h-100" lang="en">
 
 <head>
-    <title>Project Recipe-Twist</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <!-- SEO Meta Description: Fixes Lighthouse SEO Audit -->
+    <meta name="description"
+        content="RecipeTwist: Create, share, and discover delicious home-cooked recipes in a clean, ad-free environment. Built for food lovers by David Clamp." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Google Fonts CSS -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <title>RecipeTwist | Your Digital Cookbook</title>
 
-    <!-- Favicon Link -->
-    <link rel="icon" type="image/png" href="{% static 'images/favicon-orange.png' %}">
+    <!-- Performance Optimization: Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Google Fonts: Added &display=swap to fix Lighthouse Performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'images/favicon-orange.png' %}" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom">
         <div class="container-fluid">
-            <!-- Brand Link -->
-
             <a class="navbar-brand brand" href="{% url 'home' %}">
                 <i class="fas fa-utensils red-o me-2"></i>Recipe<span class="red-o">Twist</span>
             </a>
@@ -44,28 +50,26 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}"
                             href="{% url 'home' %}">Home</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == recipe_add %}active{% endif %}" aria-current="page"
-                            href="{{ recipe_add }}">
+                        <a class="nav-link {% if 'add' in request.path %}active{% endif %}"
+                            href="{% url 'add_recipe' %}">
                             Add Recipe
                         </a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                        <a class="nav-link {% if 'signup' in request.path %}active{% endif %}"
                             href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                        <a class="nav-link {% if 'login' in request.path %}active{% endif %}"
                             href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
@@ -81,7 +85,6 @@
                 Logged in as: <strong>{{ user }}</strong>
             </p>
             {% else %}
-            <!--  Updated Messag to edit recipes -->
             <p class="text-end small text-muted mb-3">
                 <i class="fas fa-info-circle me-1"></i>
                 <a href="{% url 'account_login' %}" class="text-decoration-none text-muted">Log in to edit recipes</a>
@@ -89,6 +92,7 @@
             {% endif %}
         </div>
 
+        <!-- Messages with auto-dismiss IDs -->
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
@@ -103,12 +107,8 @@
             </div>
         </div>
 
-        {% block content %}
-        <!-- Content Goes here -->
-        {% endblock content %}
+        {% block content %} {% endblock content %}
     </main>
-
-    <!-- Footer -->
 
     <footer class="footer mt-auto py-4 bg-white border-top">
         <div class="container text-center text-muted">
@@ -117,8 +117,20 @@
         </div>
     </footer>
 
+    <!-- Bootstrap Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+    </script>
+
+    <!-- Auto-dismiss script for Bootstrap alerts -->
+    <script>
+        setTimeout(function () {
+            let messages = document.getElementById("msg");
+            if (messages) {
+                let alert = new bootstrap.Alert(messages);
+                alert.close();
+            }
+        }, 3000);
     </script>
 </body>
 
