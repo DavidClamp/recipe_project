@@ -1,29 +1,27 @@
 /* 1. Global & Backgrounds */
-body,
-.main-bg {
-    background-color: #F9FAFC;
-    /* Your clean off-white */
+body, .main-bg {
+    background-color: #F9FAFC; /* Clean off-white */
     font-family: 'Lato', sans-serif;
-    color: #333;
+    color: #212529;
 }
 
-/* 2. Brand & Navigation  */
+/* 2. Brand & Navigation (The Knives/Logo) */
 .brand {
     font-size: 1.6rem;
     font-weight: 700;
     color: #2D3436;
 }
 
-.red-o {
-    color: #E84610;
+.red-o, .author {
+    color: #E84610; /* Burnt Orange for Logo & Icons */
 }
 
-/* 3. Cards  */
+/* 3. Cards & Links */
 .card {
     background-color: #ffffff;
     border: none;
     border-radius: 15px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
@@ -31,98 +29,39 @@ body,
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* 4. Images */
-.scale {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 15px 15px 0 0;
-}
-
-/* 5. Buttons  */
-.btn-outline-danger {
-    color: #E84610;
-    border-color: #E84610;
-    font-weight: 600;
-    transition: 0.2s;
-}
-
-.btn-outline-danger:hover {
-    background-color: #E84610;
-    border-color: #E84610;
-    color: #ffffff;
-}
-
-/* 6. Footer */
-.dark-bg {
-    background-color: #f8f9fa;
-    border-top: 1px solid #dee2e6;
-}
-
-footer p {
-    color: #6c757d;
-    font-size: 0.9rem;
-}
-
-/* 7. Author Overlay  */
-.image-flash {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 5px 12px;
-    border-radius: 20px;
-    left: auto;
-}
-
-.author {
-    color: #E84610;
-    margin: 0;
-    font-weight: 700;
-    text-transform: none;
-}
-
-/* 8. Text Links */
-.recipe-link,
-.post-link {
+.recipe-link, .post-link {
     text-decoration: none;
     color: inherit;
 }
 
-/* Custom Pagination Styling */
-.pagination .page-link {
-    background-color: #ffffff;
-    color: #E84610;
-    border: none;
-    font-weight: 600;
+/* 4. Buttons (Primary & Auth) */
+.btn-primary, .btn-auth {
+    background-color: #E84610;
+    border-color: #E84610;
+       color: #ffffff; 
     transition: all 0.3s ease;
-    padding: 0.75rem 1.5rem;
 }
 
-/* Hover & Active States */
-.pagination .page-link:hover {
-    background-color: #E84610;
-    color: #ffffff;
+.btn-primary:hover, .btn-auth:hover {
+    background-color: #c93d0e;
+    border-color: #c93d0e;
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(232, 70, 16, 0.2);
 }
 
-/* Disabled State (e.g., when on page 1) */
-.pagination .page-item.disabled .page-link {
-    background-color: transparent;
-    color: #cbd5e0;
+.btn-outline-danger {
+    color: #E84610;
+    border-color: #E84610;
+    font-weight: 700;
 }
 
-/* Page Info Text */
-.pagination .text-muted {
-    font-size: 0.9rem;
-    font-weight: 400;
-    align-self: center;
+.btn-outline-danger:hover {
+    background-color: #E84610;
+    color: #ffffff;
 }
 
-/* Style Crispy Form Inputs */
-.form-control,
-.form-select {
+/* 5. Form Styling (Crispy Forms & Summernote) */
+.form-control, .form-select {
     border-radius: 10px;
     border: 1px solid #e2e8f0;
     padding: 0.75rem;
@@ -133,20 +72,34 @@ footer p {
     box-shadow: 0 0 0 0.25rem rgba(232, 70, 16, 0.1);
 }
 
-/* Override the default Bootstrap blue for all primary buttons */
-.btn-primary,
-.btn-auth {
-    background-color: #E84610;
-    border-color: #E84610;
-    color: #ffffff;
+/* 6. Pagination */
+.pagination .page-link {
+    background-color: #ffffff;
+    color: #E84610;
+    border: none;
+    font-weight: 600;
     transition: all 0.3s ease;
+    padding: 0.75rem 1.5rem;
 }
 
-/* Hover state */
-.btn-primary:hover,
-.btn-auth:hover {
-    background-color: #c93d0e;
-    border-color: #c93d0e;
+.pagination .page-link:hover {
+    background-color: #E84610;
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(232, 70, 16, 0.2);
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: transparent;
+    color: #cbd5e0;
+}
+
+/* 7. Footer */
+.dark-bg {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+footer p {
+    color: #595959;
+    font-size: 0.95rem;
 }
