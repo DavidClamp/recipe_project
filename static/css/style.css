@@ -1,8 +1,8 @@
 /* 1. Global & Backgrounds */
 body, .main-bg {
-    background-color: #F9FAFC; /* Clean off-white */
+    background-color: #F9FAFC;
     font-family: 'Lato', sans-serif;
-    color: #212529;
+    color: #212529; /* Dark charcoal passes on off-white */
 }
 
 /* 2. Brand & Navigation (The Knives/Logo) */
@@ -13,7 +13,8 @@ body, .main-bg {
 }
 
 .red-o, .author {
-    color: #E84610; /* Burnt Orange for Logo & Icons */
+    color: #C83C0D !important; 
+    font-weight: 700;
 }
 
 /* 3. Cards & Links */
@@ -34,11 +35,15 @@ body, .main-bg {
     color: inherit;
 }
 
+.text-muted, a.text-muted {
+    color: #575757 !important;
+}
+
 /* 4. Buttons (Primary & Auth) */
 .btn-primary, .btn-auth {
-    background-color: #E84610;
+    background-color: #E84610; 
     border-color: #E84610;
-       color: #ffffff; 
+    color: #ffffff !important; 
     transition: all 0.3s ease;
 }
 
@@ -50,17 +55,18 @@ body, .main-bg {
 }
 
 .btn-outline-danger {
-    color: #E84610;
-    border-color: #E84610;
+    color: #C83C0D !important;
+    border-color: #C83C0D !important;
+    border-width: 2px;
     font-weight: 700;
 }
 
 .btn-outline-danger:hover {
-    background-color: #E84610;
-    color: #ffffff;
+    background-color: #C83C0D !important;
+    color: #ffffff !important;
 }
 
-/* 5. Form Styling (Crispy Forms & Summernote) */ 
+/* 5. Form Styling */ 
 .form-control, .form-select {
     border-radius: 10px;
     border: 1px solid #e2e8f0;
@@ -68,14 +74,14 @@ body, .main-bg {
 }
 
 .form-control:focus {
-    border-color: #E84610;
-    box-shadow: 0 0 0 0.25rem rgba(232, 70, 16, 0.1);
+    border-color: #C83C0D;
+    box-shadow: 0 0 0 0.25rem rgba(200, 60, 13, 0.1);
 }
 
 /* 6. Pagination */
 .pagination .page-link {
     background-color: #ffffff;
-    color: #E84610;
+    color: #C83C0D;
     border: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -83,7 +89,7 @@ body, .main-bg {
 }
 
 .pagination .page-link:hover {
-    background-color: #E84610;
+    background-color: #C83C0D;
     color: #ffffff;
     transform: translateY(-2px);
 }
@@ -100,6 +106,6 @@ body, .main-bg {
 }
 
 footer p {
-    color: #595959;
+    color: #575757; 
     font-size: 0.95rem;
 }
