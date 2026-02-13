@@ -3,12 +3,9 @@
 > [!NOTE]  
 > Return back to the [README.md](README.md) file.
 
-
-
 ## Code Validation
 
 - I have used the recommended W3C HTML Validator, W3C CSS Jigsaw Validator, and PEP 8 CI Linter to validate all of my project code.
-
 
 ### HTML
 
@@ -30,7 +27,6 @@ Directory|	File	|URL (Live/Source)|	Screenshot|	Notes|
 |account|	signup.html|	W3C Link||		Pass|
 
 
-
 ### CSS
 
 My custom styles were validated using the W3C Jigsaw Validator.
@@ -48,11 +44,11 @@ I've used the JShint Validator to ensure any custom scripts are error-free. As t
 | --- | --- | --- | --- |
 |root|base.html (Inline Scripts)	|	Pass: Bootstrap 5.0.1 Bundle correctly imported and functional.|
 
-Validation Notes
+Technical Verification
 
-- JShint Configuration: I have verified that any future ES6 methods (like let or const) are recognized by using the /* jshint esversion: 11 */ directive.
-- External Libraries: The Bootstrap 5.0.1 Bundle is correctly placed at the bottom of the <body> to prevent render-blocking.
-- Manual Testing: The Navbar Toggler and Alert Dismissal buttons were manually verified across all Browser Compatibility tests.
+- Performance: Placing the script at the bottom of the <body> prevents Render-Blocking, contributing to your high Lighthouse Performance score.
+- Integrity: The use of the integrity and crossorigin attributes on your Bootstrap CDN link ensures the script hasn't been tampered with, satisfying Web Security Best Practices.
+- Manual Testing: The Navbar Toggler (Hamburger menu) and Alert Dismissal buttons were manually verified on Mobile, Tablet, and Desktop breakpoints.
 
 
 ### Python (PEP 8)
@@ -151,7 +147,7 @@ Defensive design was manually tested to ensure that user inputs are validated an
 |Form Validation|	Feature is expected to prevent the submission of empty recipe titles or content.|	Left the "Title" field blank and attempted to save the recipe.|Validation Error: Browser prevented submission via the required attribute.	
 |URL Security|	Feature is expected to block non-admin users from accessing the Django Admin panel.|	Attempted to navigate to /admin as a standard registered user.|	Access Blocked: User was prompted for admin credentials or denied access.	
 |Guest Access|	Feature is expected to allow guests to read recipes but not create or modify them.|	Accessed the site as an unauthenticated guest.	|Recipes were readable, but "Add", "Edit", and "Delete" options were removed.	
-|404 Error Handling|	Feature is expected to show a branded 404 page for non-existent recipes or URLs.	|Entered a broken URL (e.g., /non-existent-dish).|	Success: Custom 404 Error Page was displayed with a "Back to Kitchen" button.	
+|404 Error Handling|	Feature is expected to show a branded 404 page for non-existent recipes or URLs.	|Entered a broken URL (e.g., /non-existent-dish).|	Success: Custom 404 Error Page was displayed with a "Back to Kitchen" button.
 
 
 ## User Story Testing
@@ -174,7 +170,7 @@ Defensive design was manually tested to ensure that user inputs are validated an
 ## Automated Testing
 
 I have conducted a series of automated tests on my application using the Django Testing Framework.
-[!NOTE]
+
 I fully acknowledge and understand that, in a real-world scenario, an extensive set of additional tests would be more comprehensive. For this project, the focus was on core CRUD logic and URL resolution.
 
 Unit Tests
@@ -196,7 +192,7 @@ Linter Validation
 Since the project relies on Bootstrap 5's built-in JavaScript for interactive elements (like the Navbar Toggler and Alert Dismissal buttons), testing was conducted manually across different devices.
 
 | Feature | Action | Expected Result | Actual Result |
-| --- | --- | --- | --- | ---|
+| --- | --- | --- | --- | 
 |Navbar Toggler|	Click the "Hamburger" icon on mobile.|	Menu expands to show navigation links.|	Pass
 |Alert Close|	Click the 'X' button on a success message.|	The alert immediately disappears from the DOM.|	Pass
 Summernote Editor|	Interact with bold/italic buttons in the form.|	Text updates in real-time within the editor.|	Pass
@@ -260,7 +256,7 @@ I tracked and resolved several technical challenges during development to ensure
 
 | Bug | Issue | Resolution | Screenshot |
 | --- | --- | --- | --- |
-|W3C Heading Hierarchy|	The W3C Validator flagged an error: "Heading h3 follows h1, skipping 1 level."|	In recipe_detail.html, I changed the sidebar headers from <h3> to <h2 class="h5">. This maintained the visual size while satisfying accessibility standards.|	
+W3C Heading Hierarchy|	The W3C Validator flagged an error: "Heading h3 follows h1, skipping 1 level."|	In recipe_detail.html, I changed the sidebar headers from h3 to h2 class=h5. This maintained the visual size while satisfying accessibility standards.|
 |Summernote Assets 404|	Summernote icons and styling failed to load on the live Heroku site, appearing as broken boxes.|	WhiteNoise was not correctly serving the library's internal static files. I added SUMMERNOTE_THEME = 'bs5' to settings.py and ran collectstatic.|
 |Trailing Slash|Warning	W3C Validator showed multiple "Trailing slash on void elements" info warnings in base.html.|	Modern HTML5 does not require the /> on tags like <link> and <meta>. I removed the slashes to achieve a 100% clean validation report.	|
 |Double Scrollbar|	On Laptop L (1440px), the 404 page had a double scrollbar because of vh-100.|	Replaced vh-100 with min-vh-75 in the 404.html container. This allowed the Bootstrap Sticky Footer to sit naturally on the screen.|
@@ -273,3 +269,7 @@ There are no known unfixed bugs at the time of submission. All features includin
 ### Known Issues
 
 There are no remaining bugs or known issues that I am aware of at the time of submission. Even after thorough testing across multiple browsers and devices, I cannot rule out the possibility, but the core CRUD functionality, Authentication, and Summernote integration are 100% functional.
+
+#### **Technical Note**
+
+- **PEP 8 Compliance:** Some lines in the HTML templates and `settings.py` exceed 80 characters to maintain the integrity of functional URLs and CDN links, ensuring the site remains fully operational. Breaking these specific lines would invalidate the URLs and prevent the successful loading of external libraries.
