@@ -2,18 +2,19 @@
 body, .main-bg {
     background-color: #F9FAFC;
     font-family: 'Lato', sans-serif;
-    color: #212529; /* Dark charcoal passes on off-white */
+    color: #212529; 
 }
 
 /* 2. Brand & Navigation (The Knives/Logo) */
-.brand {
+.brand, h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
     font-weight: 700;
     color: #2D3436;
 }
 
 .red-o, .author {
-    color: #C83C0D !important; 
+    color: #C83C0D; 
     font-weight: 700;
 }
 
@@ -36,14 +37,14 @@ body, .main-bg {
 }
 
 .text-muted, a.text-muted {
-    color: #575757 !important;
+    color: #575757;
 }
 
 /* 4. Buttons (Primary & Auth) */
 .btn-primary, .btn-auth {
     background-color: #E84610; 
     border-color: #E84610;
-    color: #ffffff !important; 
+    color: #ffffff; 
     transition: all 0.3s ease;
 }
 
@@ -55,15 +56,15 @@ body, .main-bg {
 }
 
 .btn-outline-danger {
-    color: #C83C0D !important;
-    border-color: #C83C0D !important;
+    color: #C83C0D;
+    border-color: #C83C0D;
     border-width: 2px;
     font-weight: 700;
 }
 
 .btn-outline-danger:hover {
-    background-color: #C83C0D !important;
-    color: #ffffff !important;
+    background-color: #C83C0D;
+    color: #ffffff;
 }
 
 /* 5. Form Styling */ 
