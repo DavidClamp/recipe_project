@@ -32,7 +32,6 @@ Directory|	File	|URL (Live/Source)|	Screenshot|	Notes|
 | center | [add_recipe.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/add_recipe.html) |[Direct Input] | ![screenshot](documentation/validation/html-center-add_recipe.png) | Pass|
 | center | [delete_recipe.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/delete_recipe.html) |[Direct Input]| ![screenshot](documentation/validation/html-center-delete_recipe.png) |  Pass: Fixed H1->H3 skip to H1->H2|
 | center | [edit_recipe.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/edit_recipe.html) |[Direct Input]|  ![screenshot](documentation/validation/html-center-edit_recipe.png) | Pass|
-| center | [home.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/home.html) ||![screenshot](documentation/validation/html-center-home.png) | Pass |
 | center | [index.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/index.html) ||  ![screenshot](documentation/validation/html-center-index.png) | Pass|
 | center | [recipe_detail.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/recipe_detail.html) ||![screenshot](documentation/validation/html-center-recipe_detail.png) | Pass |
 | templates | [404.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/404.html) |[Direct Input]| ![screenshot](documentation/validation/html-templates-404.png) | Pass |
