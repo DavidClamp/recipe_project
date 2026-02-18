@@ -11,30 +11,20 @@
 
 For pages requiring authentication (CRUD operations), I followed the View Page Source method:
 
-1. Navigated to the live Heroku page.
-2. Copied the compiled source code (CTRL+U).
-3. Validated by Direct Input to bypass Jinja2 syntax errors.
+To ensure 100% technical accuracy, the following professional workflow was used:
 
-Directory|	File	|URL (Live/Source)|	Screenshot|	Notes|
-| --- | --- | --- | --- | --- |
-|center	|	index.html|	W3C Link||		Pass|
-|center|	recipe_detail.html	|W3C Link||		Pass: Fixed H1->H3 skip to H1->H2|
-|center|	add_recipe.html|	[Direct Input]||		Pass|
-|center|	edit_recipe.html|	[Direct Input]||		Pass|
-|center|delete_recipe.html|	[Direct Input]||		Pass|
-|templates|	404.html|	[Direct Input]||		Pass|
-|account|	login.html|	W3C Link||		Pass|
-|account|	signup.html|	W3C Link||		Pass|
+Authenticated Pages (Add/Edit/Delete):
+
+1. Navigated to the live Heroku deployment while logged in.
+2. Generated the "compiled" source code using View Page Source (CTRL+U).
+3. Validated the resulting code using the W3C Markup Validation Service (Direct Input).
+
+Public Pages (Home/Detail/Login):
+
+1. Validated by copying the live Heroku URLs directly into the W3C Nu HTML Checker.
 
 
 ### HTML Validation
-
-| Page | File | URL (Live) | Screenshot | Result |
-| :--- | :--- | :--- | :--- | :--- |
-| **Home** | `index.html` | [W3C Link](https://validator.w3.org) | ![screenshot](documentation/validation/html-home.png) | **Pass** |
-| **Detail** | `recipe_detail.html` | [W3C Link](https://validator.w3.orgclassic-pancakes%2F) | ![screenshot](documentation/validation/html-detail.png) | **Pass** |
-| **Add** | `add_recipe.html` | [Direct Input] | ![screenshot](documentation/validation/html-add.png) | **Pass** |
-
 
 
 | Page | Directory | File|URL (Live/Source)| Screenshot| Notes |
@@ -63,51 +53,39 @@ Directory|	File	|URL (Live/Source)|	Screenshot|	Notes|
 
 My custom styles were validated using the W3C Jigsaw Validator.
 
-| Directory | File | URL | Screenshot | Notes |
-| --- | --- | --- | --- | --- |
-| center/css| style.css|Jigsaw Link||Pass: 0 Errors
+| Directory | File | Screenshot | Notes |
+| --- | --- | --- | --- |
+| center/css|[style.css](https://github.com/DavidClamp/recipe_project/blob/main/static/css/style.css)| ![screenshot](documentation/validation/css-validation.png)||Pass: 0 Errors
 
 
 ### JavaScript
 
 I've used the JShint Validator to ensure any custom scripts are error-free. As the project primarily utilizes the Bootstrap 5 library for front-end interactivity, the focus of JavaScript testing was on successful DOM integration and external library loading.
 
-| Directory | File | Screenshot | Notes |
-| --- | --- | --- | --- |
-|root|base.html (Inline Scripts)	|	Pass: Bootstrap 5.0.1 Bundle correctly imported and functional.|
-
-Technical Verification
-
-- Performance: Placing the script at the bottom of the <body> prevents Render-Blocking, contributing to your high Lighthouse Performance score.
-- Integrity: The use of the integrity and crossorigin attributes on your Bootstrap CDN link ensures the script hasn't been tampered with, satisfying Web Security Best Practices.
-- Manual Testing: The Navbar Toggler (Hamburger menu) and Alert Dismissal buttons were manually verified on Mobile, Tablet, and Desktop breakpoints.
+|Metric	| Value|
+| --- | --- |
+Tool|	JSHint |
+ES Version	|ES6 (Confirmed via jshint esversion: 6)|
+Complexity	| 2 (Low/Excellent)|
+Result	| Pass (0 Errors, 0 Warnings after configuration)|
+Screenshot| ![screenshot](documentation/validation/js-validation.png)|
 
 
 ### Python (PEP 8)
-
-All custom Python files were validated using the Code Institute CI Python Linter.
-
-| Directory | File | Screenshot | Notes |
-| --- | --- | --- | --- | 
-|center|	views.py||	Pass: No E302/E501 errors|
-|center|models.py||		Pass: Corrected blank lines|
-|center|	forms.py||		Pass|
-|my_project|	settings.py||		Pass: Long lines broken for PEP 8|
-
 
 I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com) to validate all of my Python files.
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| center | [admin.py](https://github.com/DavidClamp/recipe_project/blob/main/center/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/admin.py) | ![screenshot](documentation/validation/py-center-admin.png) | |
-| center | [forms.py](https://github.com/DavidClamp/recipe_project/blob/main/center/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/forms.py) | ![screenshot](documentation/validation/py-center-forms.png) |  |
-| center | [models.py](https://github.com/DavidClamp/recipe_project/blob/main/center/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/models.py) | ![screenshot](documentation/validation/py-center-models.png) | Pass: Corrected blank lines |
-| center | [tests.py](https://github.com/DavidClamp/recipe_project/blob/main/center/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/tests.py) | ![screenshot](documentation/validation/py-center-tests.png) |  |
-| center | [urls.py](https://github.com/DavidClamp/recipe_project/blob/main/center/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/urls.py) | ![screenshot](documentation/validation/py-center-urls.png) | |
-| center | [views.py](https://github.com/DavidClamp/recipe_project/blob/main/center/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/views.py) | ![screenshot](documentation/validation/py-center-views.png) | Pass: No E302/E501 errors |
-|my_project  | [manage.py](https://github.com/DavidClamp/recipe_project/blob/main/manage.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/manage.py) | ![screenshot](documentation/validation/py--manage.png) |  |
-| my_project | [settings.py](https://github.com/DavidClamp/recipe_project/blob/main/my_project/settings.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/my_project/settings.py) | ![screenshot](documentation/validation/py-my_project-settings.png) | Pass: Long lines broken for PEP 8|
-| my_project | [urls.py](https://github.com/DavidClamp/recipe_project/blob/main/my_project/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/my_project/urls.py) | ![screenshot](documentation/validation/py-my_project-urls.png) | |
+| center | [admin.py](https://github.com/DavidClamp/recipe_project/blob/main/center/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/admin.py) | ![screenshot](documentation/validation/pep8-admin.png) | |
+| center | [forms.py](https://github.com/DavidClamp/recipe_project/blob/main/center/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/forms.py) | ![screenshot](documentation/validation/pep8-forms.png) |  |
+| center | [models.py](https://github.com/DavidClamp/recipe_project/blob/main/center/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/models.py) | ![screenshot](documentation/validation/pep8-models.png) | Pass: Corrected blank lines |
+| center | [tests.py](https://github.com/DavidClamp/recipe_project/blob/main/center/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/tests.py) | ![screenshot](documentation/validation/pep8-tests.png) |  |
+| center | [urls.py](https://github.com/DavidClamp/recipe_project/blob/main/center/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/urls.py) | ![screenshot](documentation/validation/pep8-urls.png) | |
+| center | [views.py](https://github.com/DavidClamp/recipe_project/blob/main/center/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/center/views.py) | ![screenshot](documentation/validation/pep8-views.png) | Pass: No E302/E501 errors |
+|my_project  | [manage.py](https://github.com/DavidClamp/recipe_project/blob/main/manage.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/manage.py) | ![screenshot](documentation/validation/pep8-manage.png) |  |
+| my_project | [settings.py](https://github.com/DavidClamp/recipe_project/blob/main/my_project/settings.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/my_project/settings.py) | ![screenshot](documentation/validation/pep8-settings.png) | Pass: Long lines broken for PEP 8|
+| my_project | [urls.py](https://github.com/DavidClamp/recipe_project/blob/main/my_project/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/DavidClamp/recipe_project/main/my_project/urls.py) | ![screenshot](documentation/validation/pep8-project-urls.png) | |
 
 
 ## Responsiveness
@@ -116,13 +94,13 @@ I have tested the live site on various device sizes to ensure the Bootstrap 5 gr
 
 Page	|Mobile (375px)|	Tablet (768px)|	Desktop (1440px)|	Notes|
 | --- | --- | --- | --- | --- |
-|Register||||				Forms stack vertically; easy to tap.|
-|Login||||				Centered layout remains balanced.|
-|Home (Grid)||||				Cards transition from 1 to 2 to 3 columns.|
-|Add Recipe||||				Summernote editor scales to width.|
-|Edit Recipe||||				Pre-filled data is clearly visible.|
-|Recipe Detail||||				Ingredients & Prep sections stack correctly.|
-|404 Page	||||			Error message stays centered.|
+|Register|![screenshot](documentation/responsiveness/mobile-register.png)|![screenshot](documentation/responsiveness/laptop-register.png)|![screenshot](documentation/responsiveness/desktop-register.png)|Forms stack vertically; easy to tap.|
+|Login|![screenshot](documentation/responsiveness/mobile-login.png)|![screenshot](documentation/responsiveness/laptop-login.png)|![screenshot](documentation/responsiveness/desktop-login.png)|	Centered layout remains balanced.|
+|Home (Grid)|![screenshot](documentation/responsiveness/mobile-home.png)|![screenshot](documentation/responsiveness/laptop-home.png)|![screenshot](documentation/responsiveness/desktop-home.png)|	Cards transition from 1 to 3 columns.|
+|Add Recipe|![screenshot](documentation/responsiveness/mobile-add-recipe.png)|![screenshot](documentation/responsiveness/laptop-add-recipe.png)|![screenshot](documentation/responsiveness/desktop-add-recipe.png)|	Summernote editor scales to width.|
+|Edit Recipe|![screenshot](documentation/responsiveness/mobile-edit-recipe.png)|![screenshot](documentation/responsiveness/laptop-edit-recipe.png)|![screenshot](documentation/responsiveness/desktop-edit-recipe.png)|Pre-filled data is clearly visible.|
+|Recipe Detail|![screenshot](documentation/responsiveness/mobile-detail.png)|![screenshot](documentation/responsiveness/laptop-detail-recipe.png)|![screenshot](documentation/responsiveness/desktop-detail-recipe.png)|Ingredients & Prep sections stack correctly.|
+|404 Page	|![screenshot](documentation/responsiveness/mobile-404.png)|![screenshot](documentation/responsiveness/laptop-404.png)|![screenshot](documentation/responsiveness/desktop-404.png)|	Error message stays centered.|
 
 
 ## Browser Compatibility
@@ -131,10 +109,9 @@ I have tested the RecipeTwist live site on the following browsers to ensure cons
 
 | Browser | Screenshot | Notes |
 | --- | --- | --- |
-|Google Chrome||		Pass: Primary development browser. All animations and Bootstrap 5 components work perfectly.
-|Mozilla Firefox||		Pass: No layout shifts detected. Summernote rich-text editor functions as expected.
-|Microsoft Edge||		Pass: Excellent performance; identical rendering to Chrome (Chromium-based).
-|Safari (iOS)||		Pass: Navbar and responsive grid scale elegantly on mobile.
+|Google Chrome| ![screenshot](documentation/browser/chrome-home.png) |		Pass: Primary development browser. All animations and Bootstrap 5 components work perfectly.
+|Microsoft Edge|![screenshot](documentation/browser/edge-home.png)|	Pass: Excellent performance; identical rendering to Chrome (Chromium-based).
+
 
 Testing Observations
 
