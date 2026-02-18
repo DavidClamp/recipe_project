@@ -46,14 +46,15 @@ Directory|	File	|URL (Live/Source)|	Screenshot|	Notes|
 | Index | center | [index.html](https://recipe-twist-app-af6a25c38738.herokuapp.com/)|[W3C Link](https://validator.w3.org)|  ![screenshot](documentation/validation/index-html.png) | Pass|
 | Detail | center | [recipe_detail.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/recipe_detail.html) |[W3C Link](https://validator.w3.org)|![screenshot](documentation/validation/detail-recipe.png) | Pass |
 |Error 404| templates | [404.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/404.html) |[Direct Input]| ![screenshot](documentation/validation/html-templates-404.png) | Pass |
-|login | templates | [login.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/login.html) || ![screenshot](documentation/validation/html-templates-login.png) | Pass |
-| Logout| templates | [logout.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/logout.html) || ![screenshot](documentation/validation/html-templates-logout.png) |Pass  |
-|password reset| templates | [password_reset.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset.html) ||  ![screenshot](documentation/validation/html-templates-password_reset.png) |  Pass|
-|Passord | templates | [password_reset_done.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset_done.html) || ![screenshot](documentation/validation/html-templates-password_reset_done.png) | Pass|
-|password| templates | [password_reset_from_key.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset_from_key.html) ||  ![screenshot](documentation/validation/html-templates-password_reset_from_key.png) | Pass|
-|Password reset| templates | [password_reset_from_key_done.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset_from_key_done.html) | | ![screenshot](documentation/validation/html-templates-password_reset_from_key_done.png) |  |
-|Sign-up| templates | [signup.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/signup.html) ||![screenshot](documentation/validation/html-templates-signup.png) | Pass|
-|verify| templates | [verification_sent.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/verification_sent.html) ||  ![screenshot](documentation/validation/html-templates-verification_sent.png) | Pass|
+|Error 403| templates | [403.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/tests/test_403_csrf.html)|[Direct Input]| ![screenshot](documentation/validation/html-templates-404.png) | Pass |
+|login | templates | [login.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/login.html) |[Direct Input]| ![screenshot](documentation/validation/login.png) | Pass |
+| Logout| templates | [logout.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/logout.html) |[Direct Input]| ![screenshot](documentation/validation/logout.png) |Pass  |
+|password reset| templates | [password_reset.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset.html) |[Direct Input]|  ![screenshot](documentation/validation/html-templates-password_reset.png) |  Pass|
+|Password reset done | templates | [password_reset_done.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset_done.html) |[Direct Input]| ![screenshot](documentation/validation/html-templates-password_reset_done.png) | Pass|
+|password reset from key| templates | [password_reset_from_key.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset_from_key.html) |[Direct Input]|  ![screenshot](documentation/validation/html-templates-password_reset_from_key.png) | Pass|
+|Password reset from key done| templates | [password_reset_from_key_done.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/password_reset_from_key_done.html) |[Direct Input] | ![screenshot](documentation/validation/html-templates-password_reset_from_key_done.png) | Pass  |
+|Sign-up| templates | [signup.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/signup.html) |[Direct Input]|![screenshot](documentation/validation/signup.png) | Pass|
+|verify| templates | [verification_sent.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/account/verification_sent.html) |[Direct Input]|  ![screenshot](documentation/validation/html-templates-verification_sent.png) | Pass|
 
 
 

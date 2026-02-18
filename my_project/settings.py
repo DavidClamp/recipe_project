@@ -149,3 +149,6 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',
 }
+
+# Use console backend to prevent 500 errors when sending password reset emails
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
