@@ -129,9 +129,7 @@ Testing Observations
 |Home|||			High scores in Accessibility and SEO.
 |Recipe Detail|||			W3C-compliant headings contribute to high SEO.
 |Add Recipe|||			Performance impacted by Summernote assets.
-|Edit Recipe|||			Consistent with the "Add" page.
 |Login|||			Simple, efficient Allauth form.
-|Register|||			Validated accessibility for input fields.
 |404 Page|||			Fast load time due to minimal assets.
 
 Audit Observations
