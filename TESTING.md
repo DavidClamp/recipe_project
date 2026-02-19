@@ -126,17 +126,11 @@ Testing Observations
 
  | Page | Mobile | Desktop | Notes |
 | --- | --- | --- | ---|
-|Home|||			High scores in Accessibility and SEO.
-|Recipe Detail|||			W3C-compliant headings contribute to high SEO.
-|Add Recipe|||			Performance impacted by Summernote assets.
-|Login|||			Simple, efficient Allauth form.
-|404 Page|||			Fast load time due to minimal assets.
-
-Audit Observations
-
-- Accessibility: Scored highly across all pages due to semantic HTML5 tags and Bootstrap 5's ARIA support.
-- Best Practices: Confirmed secure connection (HTTPS) and use of WhiteNoise for optimized static file delivery.
-- SEO: Proper use of meta tags and descriptive Alt text for the favicon and icons helped maintain strong scores.
+|Home|![screenshot](documentation/lighthouse/lighthouse-mobile-home.png)|![screenshot](documentation/lighthouse/lighthouse-desktop-home.png)|
+|Recipe Detail|![screenshot](documentation/lighthouse/lighthouse-mobile-detail.png)|	![screenshot](documentation/lighthouse/lighthouse-desktop-detail.png)	
+|Add Recipe |![screenshot](documentation/lighthouse/lighthouse-mobile-add.png)e|![screenshot](documentation/lighthouse/lighthouse-desktop-add.png)|
+|Login|![screenshot](documentation/lighthouse/lighthouse-mobile-login.png)|![screenshot](documentation/lighthouse/lighthouse-desktop-login.png)|	
+|404 Page|![screenshot](documentation/lighthouse/lighthouse-mobile-404.png)|![screenshot](documentation/lighthouse/lighthouse-desktop-404.png)|
 
 
 ## Defensive Programming
