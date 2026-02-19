@@ -139,16 +139,15 @@ Defensive design was manually tested to ensure that user inputs are validated an
 
  | Page | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- | --- |
-|Recipe Management|	Feature is expected to allow the author to create new recipes with formatted content.|	Created a new recipe using Summernote for bold text and bullet points.|	Recipe was created successfully with all HTML formatting preserved.	
-||Feature is expected to allow the author to update their own existing recipes.|	Edited an existing recipe as the original author.	|Recipe was updated successfully; success message displayed.	
-||Feature is expected to allow the author to delete their own recipes.|	Attempted to delete a recipe, confirming the action on the confirmation page.	|Recipe was removed from the database and Heroku app.	
-||Feature is expected to block User-A from editing or deleting User-B's recipe.|	Logged in as User-A and manually entered the edit URL for User-B's recipe.|	Access Denied: Redirected to home with an error message; buttons were hidden from UI.	
-|Authentication|	Feature is expected to allow registered users to log in securely.	|Attempted login with both valid and invalid credentials.	|Valid credentials granted access; invalid credentials triggered Allauth errors.	
-||Feature is expected to allow users to log out and terminate the session.|	Logged out and attempted to access the /add/ recipe page via the URL.	|Redirected: User was sent to the login page as expected.	
-|Form Validation|	Feature is expected to prevent the submission of empty recipe titles or content.|	Left the "Title" field blank and attempted to save the recipe.|Validation Error: Browser prevented submission via the required attribute.	
-|URL Security|	Feature is expected to block non-admin users from accessing the Django Admin panel.|	Attempted to navigate to /admin as a standard registered user.|	Access Blocked: User was prompted for admin credentials or denied access.	
-|Guest Access|	Feature is expected to allow guests to read recipes but not create or modify them.|	Accessed the site as an unauthenticated guest.	|Recipes were readable, but "Add", "Edit", and "Delete" options were removed.	
-|404 Error Handling|	Feature is expected to show a branded 404 page for non-existent recipes or URLs.	|Entered a broken URL (e.g., /non-existent-dish).|	Success: Custom 404 Error Page was displayed with a "Back to Kitchen" button.
+|Recipe Management|	Feature is expected to allow the author to create new recipes with formatted content.|	Created a new recipe using Summernote for bold text and bullet points.|	Recipe was created successfully with all HTML formatting preserved.|![screenshot](documentation/defensiveprogramming/add-recipe.png)|
+||Feature is expected to allow the author to update their own existing recipes.|	Edited an existing recipe as the original author.	|Recipe was updated successfully; success message displayed.|![screenshot](documentation/defensiveprogramming/edit-recipe.png)|
+||Feature is expected to allow the author to delete their own recipes.|Attempted to delete a recipe, confirming the action on the confirmation page.	|Recipe was removed from the database and Heroku app.|![screenshot](documentation/defensiveprogramming/delete-recipe.png)|	
+|Authentication|	Feature is expected to allow registered users to log in securely.	|Attempted login with both valid and invalid credentials.	|Valid credentials granted access; invalid credentials triggered Allauth errors.|![screenshot](documentation/defensiveprogramming/not-authorised.png)|	
+||Feature is expected to allow users to log out and terminate the session.|	Logged out and attempted to access the /add/ recipe page via the URL.	|Redirected: User was sent to the login page as expected.|![screenshot](documentation/defensiveprogramming/login-to-edit.png)|
+|Form Validation|	Feature is expected to prevent the submission of empty recipe titles or content.|	Left the "Title" field blank and attempted to save the recipe.|Validation Error: Browser prevented submission via the required attribute.|![screenshot](documentation/defensiveprogramming/add-recipe.png)|	
+|URL Security|	Feature is expected to block non-admin users from accessing the Django Admin panel.|	Attempted to navigate to /admin as a standard registered user.|	Access Blocked: User was prompted for admin credentials or denied access.|![screenshot](documentation/defensiveprogramming/not-authorised.png)|	
+|Guest Access|	Feature is expected to allow guests to read recipes but not create or modify them.|	Accessed the site as an unauthenticated guest.	|Recipes were readable, but "Add", "Edit", and "Delete" options were removed.	|![screenshot](documentation/defensiveprogramming/sign-in-error.png)|
+|404 Error Handling|	Feature is expected to show a branded 404 page for non-existent recipes or URLs.	|Entered a broken URL (e.g., /non-existent-dish).|	Success: Custom 404 Error Page was displayed with a "Back to Kitchen" button.|![screenshot](documentation/defensiveprogramming/error-404.png)|
 
 
 ## User Story Testing
