@@ -25,3 +25,4 @@ class RecipeForm(forms.ModelForm):
                 attrs={'id': 'id_description', 'rows': 3}
             ),
         }
+        
