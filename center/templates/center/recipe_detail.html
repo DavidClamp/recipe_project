@@ -1,83 +1,81 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
 {% load static %}
 {% load crispy_forms_tags %}
 
-    <div class="container fluid">
-    <div class="row">
-       
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
         <!-- Recipe Header -->
-        <div class="col-12 text-center mb-5">
+        <header class="col-12 text-center mb-5">
             <h1 class="display-3 fw-bold">{{ recipe.title }}</h1>
             <p class="text-muted">
                 Created by <strong>{{ recipe.author }}</strong> | 
                 Last updated: {{ recipe.updated_at|date:"M d, Y" }}
             </p>
             <hr class="w-25 mx-auto">
+        </header>
+
+        <!-- Author Actions: Edit and Delete -->
+        {% if user.is_authenticated and recipe.author == user %}
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <div class="d-inline-flex gap-2">
+                    <a href="{% url 'edit_recipe' recipe.slug %}" class="btn btn-dark shadow-sm px-4">
+                        <i class="fas fa-edit me-2"></i>Edit
+                    </a>
+                    <a href="{% url 'delete_recipe' recipe.slug %}" class="btn btn-danger shadow-sm px-4">
+                        <i class="fas fa-trash-alt me-2"></i>Delete
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+            <!-- Sidebar: About & Ingredients -->
+            <aside class="col-lg-4">
+                <div class="card shadow-sm border-0 mb-4 bg-light">
+                    <div class="card-body p-4">
+                        <h2 class="h5 fw-bold mb-3"><i class="fas fa-info-circle me-2 red-o"></i>About</h2>
+                        <div class="small text-secondary italic">
+                            {{ recipe.description|safe }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body p-4">
+                        <!-- red-o class uses your high-contrast #C83C0D -->
+                        <h2 class="h5 fw-bold mb-3"><i class="fas fa-shopping-basket me-2 red-o"></i>Ingredients</h2>
+                        <div class="recipe-content">
+                            {{ recipe.ingredients|safe }}
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content: Instructions -->
+            <main class="col-lg-8">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="h4 fw-bold mb-4 border-bottom pb-2">Preparation Steps</h2>
+                        <div class="recipe-content fs-5 leading-relaxed">
+                            {{ recipe.instructions|safe }}
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
 
-<!-- Author Actions: Edit and Delete -->
-{% if user.is_authenticated and recipe.author == user %}
-<div class="row mb-4">
-    <div class="col-12 text-center">
-        <div class="d-inline-flex gap-2">
-            <!-- Link to Edit Function -->
-            <a href="{% url 'edit_recipe' recipe.slug %}" class="btn btn-warning shadow-sm px-4">
-                <i class="fas fa-edit me-2"></i>Edit Recipe
-            </a>
-            <!-- Link to Delete Confirmation Function -->
-            <a href="{% url 'delete_recipe' recipe.slug %}" class="btn btn-danger shadow-sm px-4">
-                <i class="fas fa-trash-alt me-2"></i>Delete
-            </a>
-        </div>
+        <!-- Back Button -->
+        <footer class="row mb-5 mt-4">
+            <div class="col text-center">
+                <a href="{% url 'home' %}" class="btn btn-outline-danger px-4 rounded-pill shadow-sm">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Recipes
+                </a>
+            </div>
+        </footer>
     </div>
 </div>
 
-{% endif %}
-
-        <!-- Sidebar: Description & Ingredients -->
-        <div class="col-lg-4">
-            <div class="card shadow-sm border-0 mb-4 bg-light">
-                <div class="card-body p-4">
-                    <h2 class="h5 fw-bold mb-3"><i class="fas fa-info-circle me-2"></i>About</h2>
-                    <div class="small text-secondary italic">
-                        {{ recipe.description|safe }}
-                    </div>
-                </div>
-            </div>
-
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-body p-4">
-                    <h2 class="h5 fw-bold mb-3"><i class="fas fa-shopping-basket me-2 text-danger"></i>Ingredients</h2>
-                    <div class="recipe-content">
-                        <!-- Safe filter renders Summernote lists correctly -->
-                        {{ recipe.ingredients|safe }}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Content: Instructions -->
-        <div class="col-lg-8">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body p-4 p-md-5">
-                    <h2 class="h4 fw-bold mb-4 border-bottom pb-2">Preparation Steps</h2>
-                    <div class="recipe-content fs-5 leading-relaxed">
-                        <!-- Safe filter renders Summernote steps correctly -->
-                        {{ recipe.instructions|safe }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Back Button -->
-    <div class="row mb-2 mt-4">
-        <div class="col text-center">
-            <a href="{% url 'home' %}" class="btn btn-outline-danger px-4 rounded-pill shadow-sm">
-                <i class="fas fa-arrow-left me-2"></i>Back to Recipes
-            </a>
-        </div>
-    </div>
-</div>
-
-{% endblock content %}
+{% endblock %}

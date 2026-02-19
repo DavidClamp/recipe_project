@@ -1,16 +1,32 @@
 {% extends 'base.html' %}
+
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6 text-center card shadow p-5 border-danger">
-            <h2 class="text-danger mb-4"><i class="fas fa-exclamation-triangle"></i> Delete Recipe?</h2>
-            <p>Are you sure you want to delete <strong>{{ recipe.title }}</strong>? This cannot be undone.</p>
-            <form method="POST">
+        <!-- Main landmark for screen readers -->
+        <main class="col-md-6 text-center card shadow-sm p-5 border-0 rounded-4">
+            <!--  Fix: Use H2 to maintain a perfect W3C heading outline -->
+            <h2 class="h4 fw-bold mb-4">
+                <i class="fas fa-exclamation-triangle red-o me-2"></i> Delete Recipe?
+            </h2>
+            
+            <p class="text-muted mb-4">
+                Are you sure you want to delete <strong>{{ recipe.title }}</strong>? <br>
+                <span class="small text-secondary">This action cannot be undone.</span>
+            </p>
+
+            <!-- Fix: ARIA label for the "Names and Labels" Lighthouse audit -->
+            <form method="POST" aria-label="Delete confirmation form">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-danger px-4 me-2">Yes, Delete</button>
-                <a href="{% url 'recipe_detail' recipe.slug %}" class="btn btn-outline-secondary">Cancel</a>
+                <button type="submit" class="btn btn-danger btn-lg px-4 me-2 shadow-sm">
+                    Yes, Delete
+                </button>
+                <!-- Cancel button using your high-contrast branding -->
+                <a href="{% url 'recipe_detail' recipe.slug %}" class="btn btn-outline-secondary btn-lg">
+                    Cancel
+                </a>
             </form>
-        </div>
+        </main>
     </div>
 </div>
 {% endblock %}
