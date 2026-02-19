@@ -1,12 +1,19 @@
-# center/forms.py
 from django import forms
 from .models import Recipe
 
 
 class RecipeForm(forms.ModelForm):
+    """
+    Form for creating and editing recipes.
+    Uses standard textareas for stability and explicit IDs
+    to satisfy Lighthouse accessibility audits.
+    """
     class Meta:
         model = Recipe
-        fields = ('title', 'description', 'ingredients', 'instructions', 'status')
+        fields = (
+            'title', 'description', 'ingredients',
+            'instructions', 'status'
+        )
         widgets = {
             'ingredients': forms.Textarea(
                 attrs={'id': 'id_ingredients', 'rows': 5}
