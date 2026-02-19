@@ -154,17 +154,16 @@ Defensive design was manually tested to ensure that user inputs are validated an
 
  | Target | Expectation |Outcome | Screenshot |
 | --- | --- | --- | --- | 
-|Guest User|	I would like to browse a paginated list of recipes|	A grid of recipe cards is displayed on the home page with clear pagination.	|
-|Guest User|	I would like to click on a recipe card |Redirects to a detailed view showing the About, Ingredients, and Prep sections.	
-|New User|	I would like to register for an account	|Django Allauth handles a secure signup process, granting access to member features.	
-|Registered User|	I would like to create new recipes|	A secure "Add Recipe" form allows users to save new dishes to the database.	
-|Author|I would like to use a rich-text editor|The Summernote editor allows for bold instructions and bulleted ingredient lists.	
-|Author|I would like to edit my own existing recipes|	The "Edit" button opens a pre-filled form; changes are saved via the update view.	
-|Author	|I would like to delete my recipes	|The "Delete" button removes the entry from the database after a secure confirmation.	
-|Author|	I would like to save recipes as "Drafts"	|The status field allows recipes to be hidden from the public grid until finished.	
-|Author|	I would like to ensure others cannot edit my recipes	|Defensive Design: Edit/Delete buttons are hidden from other users, and URL access is blocked.	
-|User|	I would like to see a custom 404 error page|	A branded 404 page is displayed if a user enters an invalid URL.	
-|Admin|	I would like to manage all recipes via a dashboard|	The Django Admin allows for full moderation of all site content and users.	
+|Guest User|	I would like to browse a paginated list of recipes|	A grid of recipe cards is displayed on the home page with clear pagination.	|![screenshot](documentation/userstories/home.png)|
+|Guest User|	I would like to click on a recipe card |Redirects to a detailed view showing the About, Ingredients, and Prep sections.|![screenshot](documentation/userstories/detail.png)|	
+|New User|	I would like to register for an account	|Django Allauth handles a secure signup process, granting access to member features.|![screenshot](documentation/userstories/draft-recipe.png)|	
+|Registered User|	I would like to create new recipes|	A secure "Add Recipe" form allows users to save new dishes to the database.	|![screenshot](documentation/userstories/add-recipe.png)|
+|Author|I would like to edit my own existing recipes|	The "Edit" button opens a pre-filled form; changes are saved via the update view.|![screenshot](documentation/userstories/edit-recipe.png)|	
+|Author	|I would like to delete my recipes	|The "Delete" button removes the entry from the database after a secure confirmation.	|![screenshot](documentation/userstories/delete-recipe.png)|
+|Author|	I would like to save recipes as "Drafts"	|The status field allows recipes to be hidden from the public grid until finished.	|![screenshot](documentation/userstories/draft-recipe.png)|
+|Author|	I would like to ensure others cannot edit my recipes	|Defensive Design: Edit/Delete buttons are hidden from other users, and URL access is blocked.|![screenshot](documentation/userstories/show-recipe.png)|	
+|User|	I would like to see a custom 404 error page|	A branded 404 page is displayed if a user enters an invalid URL.|![screenshot](documentation/userstories/error-404.png)|	
+|Admin|	I would like to manage all recipes via a dashboard|	The Django Admin allows for full moderation of all site content and users.	|![screenshot](documentation/userstories/admin.png)|
 
 
 ## Automated Testing
