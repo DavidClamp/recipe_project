@@ -29,7 +29,7 @@ Public Pages (Home/Detail/Login):
 
 | Page | Directory | File|URL (Live/Source)| Screenshot| Notes |
 | --- | --- | --- | --- | --- | --- |
-| Home | my_project | [base.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/base.html)|[W3C Link](https://validator.w3.org)|  ![screenshot](documentation/validation/base-html.png) | Pass|
+| Home | my_project | [base.html](https://github.com/DavidClamp/recipe_project/blob/main/templates/base.html)|[Direct Input]|  ![screenshot](documentation/validation/base-html.png) | Pass|
 | Add | center | [add_recipe.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/add_recipe.html) |[Direct Input] | ![screenshot](documentation/validation/add-recipe.png) | Pass|
 | Delete | center | [delete_recipe.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/delete_recipe.html) |[Direct Input]| ![screenshot](documentation/validation/delete-recipe.png) |  Pass: Fixed H1->H3 skip to H1->H2|
 | Edit | center | [edit_recipe.html](https://github.com/DavidClamp/recipe_project/blob/main/center/templates/center/edit_recipe.html) |[Direct Input]|  ![screenshot](documentation/validation/edit-recipe.png) | Pass|
