@@ -234,15 +234,11 @@ The automated test suite verified the following critical components:
 #### Unit Test Issues
 
 During the development of automated tests for the RecipeTwist application, the following technical challenges were identified and resolved to ensure accurate Django Testing results.
-1. Summernote Widget Rendering in Tests
-- Issue: When testing the add_recipe view, the Summernote HTML widget would sometimes cause validation errors in the TestCase because the test client doesn't execute JavaScript.
-- Fix: Modified the test to send raw HTML strings (e.g., <p>Ingredients</p>) in the POST data. This accurately simulates the data sent by the Summernote editor to the backend.
-- Result: Test passed with a 302 Redirect to the new recipe's detail page.
-2. Slugify Uniqueness Collision
+1. Slugify Uniqueness Collision
 - Issue: Creating multiple recipes with the same title (e.g., "Pancakes") in a single test run caused an IntegrityError because the SlugField is set to unique=True.
 - Fix: Implemented a setUp method in tests.py to ensure each test case starts with a fresh database state, or added a unique identifier to the title during the Slugify process.
 - Screenshot: 
-3. Login Required Redirects
+2. Login Required Redirects
 - Issue: Tests for the edit_recipe view initially failed with a 404 because the test user wasn't correctly authenticated before the request.
 - Fix: Utilised self.client.login() within the TestCase to simulate a session for the Allauth-managed user.
 - Result: Verified that only the Author can access the edit route, while others are redirected.
@@ -256,7 +252,6 @@ I tracked and resolved several technical challenges during development to ensure
 | Bug | Issue | Resolution | Screenshot |
 | --- | --- | --- | --- |
 W3C Heading Hierarchy|	The W3C Validator flagged an error: "Heading h3 follows h1, skipping 1 level."|	In recipe_detail.html, I changed the sidebar headers from h3 to h2 class=h5. This maintained the visual size while satisfying accessibility standards.|
-|Summernote Assets 404|	Summernote icons and styling failed to load on the live Heroku site, appearing as broken boxes.|	WhiteNoise was not correctly serving the library's internal static files. I added SUMMERNOTE_THEME = 'bs5' to settings.py and ran collectstatic.|
 |Trailing Slash|Warning	W3C Validator showed multiple "Trailing slash on void elements" info warnings in base.html.|	Modern HTML5 does not require the /> on tags like <link> and <meta>. I removed the slashes to achieve a 100% clean validation report.	|
 |Double Scrollbar|	On Laptop L (1440px), the 404 page had a double scrollbar because of vh-100.|	Replaced vh-100 with min-vh-75 in the 404.html container. This allowed the Bootstrap Sticky Footer to sit naturally on the screen.|
 

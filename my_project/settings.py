@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'crispy_forms',
     'crispy_bootstrap5',
-    'django_summernote',
+    # 'django_summernote',
     'center',
 ]
 
@@ -53,7 +53,7 @@ LOGOUT_REDIRECT_URL = '/'
 # Bootstrap 5 & Summernote Configuration
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-SUMMERNOTE_THEME = "bs5"
+# SUMMERNOTE_THEME = "bs5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,47 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
-
- <!-- Content here -->
-
+<!-- Main Recipes Grid -->
 <div class="container-fluid mb-5">
     <div class="row row-cols-1 row-cols-md-3 g-4">
+        
         {% for recipe in recipe_list %}
+        <!-- Individual Recipe Card -->
         <div class="col">
-            <div class="card h-100 shadow-sm border-0">
+            <article class="card h-100 shadow-sm border-0">
                 <div class="card-body">
-                                    
-                    <h5 class="card-title fw-bold text-dark">{{ recipe.title }}</h5>
-                    
+                    <!-- H2 used for semantic SEO hierarchy; styled as h5 for UI consistency -->
+                    <h2 class="h5 card-title fw-bold text-dark">{{ recipe.title }}</h2>
                     
                     <p class="small text-muted mb-2">By {{ recipe.author }}</p>
                     
+                    <!-- Truncated description ensures uniform card height -->
                     <div class="card-text text-secondary mb-3">
-                        {{ recipe.description|safe|truncatewords:15 }}
+                        {{ recipe.description|truncatewords:15 }}
                     </div>
                 </div>
                 
-                <!-- Action Link Footer -->
-                <div class="card-footer bg-white border-0 pb-3">
-                    <a href=  "{% url 'recipe_detail' recipe.slug %}"  class="recipe-link"> 
-                        <span class="btn btn-outline-danger w-100 rounded-pill">View Recipe</span>
-                                              
-                    </a>
-                </div>
-            </div>
+                <!-- Action Link Footer: Separated for better visual alignment and touch-target size -->
+               
+        <div class="card-footer bg-white border-0 pb-3">
+            {% if recipe.slug %}
+                <a href="{% url 'recipe_detail' recipe.slug %}" 
+                   class="recipe-link" 
+                   aria-label="View full recipe for {{ recipe.title }}"> 
+                   <span class="btn btn-outline-danger w-100 rounded-pill">View Recipe</span>
+                </a>
+            {% else %}
+                <span class="text-muted small">Recipe under review</span>
+            {% endif %}
+</div>
+
+            </article>
         </div> 
+        
         {% empty %}
-        <div class="col-12 text-center">
+        <!-- Defensive Design: Handles empty states to guide users/admins -->
+        <div class="col-12 text-center py-5">
             <p class="text-muted">No published recipes found. Set status to "Published" in Admin.</p>
         </div>
         {% endfor %}
+
     </div>
 </div>
 
+<!-- Pagination: Uses <nav> landmark for accessible site navigation -->
 {% if is_paginated %}
-<nav aria-label="Page navigation" class="my-5">
+<nav aria-label="Recipe page navigation" class="my-5">
     <ul class="pagination justify-content-center">
-        <!-- Previous Button -->
+        
         {% if page_obj.has_previous %}
         <li class="page-item">
             <a href="?page={{ page_obj.previous_page_number }}" 
@@ -51,14 +62,13 @@
         </li>
         {% endif %}
 
-        <!-- Current Page Indicator (Hidden on small mobile) -->
+        <!-- Current Page Indicator: Essential for screen reader context -->
         <li class="page-item d-none d-sm-inline-block">
             <span class="page-link border-0 bg-transparent text-muted px-4">
                 Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
             </span>
         </li>
 
-        <!-- Next Button -->
         {% if page_obj.has_next %}
         <li class="page-item">
             <a href="?page={{ page_obj.next_page_number }}" 
@@ -67,12 +77,9 @@
             </a>
         </li>
         {% endif %}
+
     </ul>
 </nav>
 {% endif %}
 
-<!-- Content end -->
-{% endblock %}
-{% block copyright %}
-    Copyright 2026 David Clamp
 {% endblock %}

@@ -1,5 +1,5 @@
 {% extends 'base.html' %} 
-{% load static %}                       
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -12,10 +12,7 @@
                 <form method="POST" aria-label="Recipe entry form">
                     {% csrf_token %}
                     
-                    <!-- 1. Loads Summernote JS/CSS for Ingredients & Instructions -->
-                    {{ form.media }}
-                    
-                    <!-- 2. Renders all fields with high-contrast Bootstrap 5 labels -->
+                    <!-- Removed form.media to fix 500 error -->
                     {{ form|crispy }}
 
                     <div class="d-flex gap-2 mt-4">
@@ -30,3 +27,4 @@
     </div>
 </div>
 {% endblock %}
+
