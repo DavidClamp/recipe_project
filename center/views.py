@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.utils.text import slugify 
+from django.utils.text import slugify
 from .models import Recipe
 from .forms import RecipeForm
 
@@ -35,20 +35,19 @@ def add_recipe(request):
         if form.is_valid():
             recipe = form.save(commit=False)
             recipe.author = request.user
-            
-     # Generate slug from title 
+
+# Generate slug from title
             if not recipe.slug:
                 recipe.slug = slugify(recipe.title)
-                
-            recipe.status = 1
-            recipe.save()
+                recipe.status = 1
+                recipe.save()
             messages.success(request, f'Recipe "{recipe.title}" created!')
             return redirect("recipe_detail", slug=recipe.slug)
     else:
         form = RecipeForm()
     return render(request, "center/add_recipe.html", {"form": form})
-    
-    
+
+
 @login_required
 def edit_recipe(request, slug):
     """

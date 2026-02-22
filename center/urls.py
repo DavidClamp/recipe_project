@@ -8,4 +8,3 @@ urlpatterns = [
     path('edit/<slug:slug>/', views.edit_recipe, name='edit_recipe'),
     path('delete/<slug:slug>/', views.delete_recipe, name='delete_recipe'),
 ]
-
