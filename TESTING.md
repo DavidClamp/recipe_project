@@ -60,7 +60,7 @@ My custom styles were validated using the W3C Jigsaw Validator.
 
 ### JavaScript
 
-I've used the JShint Validator to ensure any custom scripts are error-free. As the project primarily utilizes the Bootstrap 5 library for front-end interactivity, the focus of JavaScript testing was on successful DOM integration and external library loading.
+I've used the JShint Validator to ensure any custom scripts are error-free. As the project primarily utilises the Bootstrap 5 library for front-end interactivity, the focus of JavaScript testing was on successful DOM integration and external library loading.
 
 |Metric	| Value|
 | --- | --- |
@@ -135,7 +135,7 @@ Testing Observations
 
 ## Defensive Programming
 
-Defensive design was manually tested to ensure that user inputs are validated and that restricted data is protected from unauthorized access or URL manipulation.
+Defensive design was manually tested to ensure that user inputs are validated and that restricted data is protected from unauthorised access or URL manipulation.
 
  | Page | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- | --- |
@@ -174,7 +174,7 @@ I fully acknowledge and understand that, in a real-world scenario, an extensive 
 
 Unit Tests
 
-I utilized django.test.TestCase to verify the following:
+I utilised django.test.TestCase to verify the following:
 
 - URL Resolution: Confirmed that all primary paths (Home, Recipe Detail, Add Recipe) resolve to the correct View functions.
 - Model Logic: Verified that the Slugify utility correctly generates a slug from the recipe title upon creation.
@@ -206,7 +206,7 @@ To run the tests locally, I used the following command:
 
 Coverage Reporting
 
-To ensure high code quality and identify any untested logic in my Function-Based Views, I utilized the Coverage.py library:
+To ensure high code quality and identify any untested logic in my Function-Based Views, I utilised the Coverage.py library:
 
 - pip3 install coverage
 - coverage run --omit="*/migrations/*,*/__init__.py,my_project/*,env.py" manage.py test
