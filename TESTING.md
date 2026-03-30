@@ -165,14 +165,25 @@ Defensive design was manually tested to ensure that user inputs are validated an
 |User|	I would like to see a custom 404 error page|	A branded 404 page is displayed if a user enters an invalid URL.|![screenshot](documentation/userstories/error-404.png)|	
 |Admin|	I would like to manage all recipes via a dashboard|	The Django Admin allows for full moderation of all site content and users.	|![screenshot](documentation/userstories/admin.png)|
 
+## Manual and Responsive Testing
+
+Manual testing was conducted across Chrome and Firefox using DevTools and physical mobile devices to ensure Bootstrap 5's interactive components function correctly.
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- | 
+|Navbar Toggler|	Click the "Hamburger" icon on mobile.|	Menu expands to show navigation links.|	Pass
+| Alert Dismissal | Click 'X' button on success messages | The alert must immediately disappear.| Pass
+| Defensive CRUD | Visit another user's Edit URL | System must return 403 Forbidden or Redirect. | Pass
+| Draft Filtering | Set recipe to 'Draft' | Verify it is hidden from the public Home page grid. |  Pass
+
 
 ## Automated Testing
 
 I have conducted a series of automated tests on my application using the Django Testing Framework.
 
-I fully acknowledge and understand that, in a real-world scenario, an extensive set of additional tests would be more comprehensive. For this project, the focus was on core CRUD logic and URL resolution.
+While this test suite focuses on core functionality, a production system would require more extensive coverage. For this project, the focus was on core CRUD logic and URL resolution.
 
-Unit Tests
+#### Unit Tests
 
 I utilised django.test.TestCase to verify the following:
 
@@ -185,17 +196,6 @@ Linter Validation
 - Python (PEP 8): All custom Python files were passed through the CI Python Linter to ensure zero indentation or whitespace errors.
 - HTML/CSS: Automated validation was performed using the W3C Validator to ensure structural integrity across all Bootstrap 5 components.
 
-
-### JavaScript Testing (Manual)
-
-Since the project relies on Bootstrap 5's built-in JavaScript for interactive elements (like the Navbar Toggler and Alert Dismissal buttons), testing was conducted manually across different devices.
-
-| Feature | Action | Expected Result | Actual Result |
-| --- | --- | --- | --- | 
-|Navbar Toggler|	Click the "Hamburger" icon on mobile.|	Menu expands to show navigation links.|	Pass
-|Alert Close|	Click the 'X' button on a success message.|	The alert immediately disappears from the DOM.|	Pass
-Summernote Editor|	Interact with bold/italic buttons in the form.|	Text updates in real-time within the editor.|	Pass
-
 ### Python (Unit Testing)
 
 I have used Django's built-in unit testing framework to verify the application's backend logic. This ensures that recipe creation, slug generation, and author-specific permissions function as intended.
@@ -204,7 +204,7 @@ To run the tests locally, I used the following command:
 
 - python3 manage.py test center
 
-Coverage Reporting
+#### Coverage Reporting
 
 To ensure high code quality and identify any untested logic in my Function-Based Views, I utilised the Coverage.py library:
 
@@ -219,29 +219,39 @@ To generate a detailed visual breakdown of the results:
 
 Test Results
 
-The automated test suite verified the following critical components:
 
-- Model Tests: Validated that a Recipe object is created correctly and that the Slugify function generates unique URLs.
-- View Tests: Confirmed that the Home page and Recipe Detail pages return a 200 OK status.
-- Security Tests: Verified that unauthenticated users are redirected when attempting to access the add_recipe view.
+| App | File |Coverage |
+| --- | --- | --- | 
+| center | views.py | 91% |
+| center | models.py | 94% |
+| center | forms.py | 100% |
 
-|App | File | Coverage | Screenshot |
-| --- | --- | --- | --- |
-|center|	views.py|	94%	
-|center|	models.py|	100%
+Project Total  96%
+
+![screenshot](documentation/coverage/coverage_report.png)|
+
+Verified Test Scenarios
+
+The automated suite, comprising 8 comprehensive test cases, verified the following critical user journeys.
+
+- Model Integrity: Validated that Recipe objects are created with correct field relationships and that the Slugify function handles URL formatting automatically.
+- View Stability: Confirmed that the Home grid and Detail pages return a 200 OK status, ensuring the "Burnt Orange" UI is accessible to all users.
+Security & Defensive Design: Verified that guests are correctly blocked from adding recipes and that a Malicious User cannot access the Edit/Delete URLs of other authors.
+- Form Validation: Confirmed that incomplete submissions (missing ingredients/instructions) are caught by the form_invalid logic rather than causing server errors.
 
 
-#### Unit Test Issues
+#### Technical Challenges & Resolutions
+To reach the 96% coverage milestone, the following architectural challenges were identified and resolved within the Django test suite.
 
-During the development of automated tests for the RecipeTwist application, the following technical challenges were identified and resolved to ensure accurate Django Testing results.
 1. Slugify Uniqueness Collision
-- Issue: Creating multiple recipes with the same title (e.g., "Pancakes") in a single test run caused an IntegrityError because the SlugField is set to unique=True.
-- Fix: Implemented a setUp method in tests.py to ensure each test case starts with a fresh database state, or added a unique identifier to the title during the Slugify process.
-- Screenshot: 
-2. Login Required Redirects
-- Issue: Tests for the edit_recipe view initially failed with a 404 because the test user wasn't correctly authenticated before the request.
-- Fix: Utilised self.client.login() within the TestCase to simulate a session for the Allauth-managed user.
-- Result: Verified that only the Author can access the edit route, while others are redirected.
+Issue: Creating multiple recipes with identical titles (e.g., "Pancakes") triggered an IntegrityError because the SlugField is restricted to unique=True.
+Resolution: Implemented a robust setUp method to ensure a clean database state for every test iteration and added unique identifiers to titles during mass-creation tests.
+Outcome: Guaranteed that automated tests do not fail due to database state pollution.
+
+2. Auth-Gated Redirect Logic
+Issue: Tests for edit_recipe initially returned 302 redirects (to login) or 404 errors because the test client was not authenticated, causing failures in permission-dependent logic.
+Resolution: Utilized self.client.login() within the TestCase to simulate active sessions for Allauth users.
+Outcome: Programmatically verified that Defensive CRUD logic correctly blocks unauthorized actors
 
 ## Bugs
 
@@ -249,8 +259,8 @@ During the development of automated tests for the RecipeTwist application, the f
 
 I tracked and resolved several technical challenges during development to ensure the application met W3C and PEP 8 standards.
 
-| Bug | Issue | Resolution | Screenshot |
-| --- | --- | --- | --- |
+| Bug | Issue | Resolution | 
+| --- | --- | --- | 
 W3C Heading Hierarchy|	The W3C Validator flagged an error: "Heading h3 follows h1, skipping 1 level."|	In recipe_detail.html, I changed the sidebar headers from h3 to h2 class=h5. This maintained the visual size while satisfying accessibility standards.|
 |Trailing Slash|Warning	W3C Validator showed multiple "Trailing slash on void elements" info warnings in base.html.|	Modern HTML5 does not require the /> on tags like <link> and <meta>. I removed the slashes to achieve a 100% clean validation report.	|
 |Double Scrollbar|	On Laptop L (1440px), the 404 page had a double scrollbar because of vh-100.|	Replaced vh-100 with min-vh-75 in the 404.html container. This allowed the Bootstrap Sticky Footer to sit naturally on the screen.|
