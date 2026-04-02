@@ -3,6 +3,10 @@
 > [!NOTE]  
 > Return back to the [README.md](README.md) file.
 
+# Introduction #
+
+This document outlines all testing carried out on the RecipeTwist application, including validation, responsiveness, browser compatibility, defensive design, user story testing, and automated unit tests. All tests were performed on the deployed Heroku version unless otherwise stated.
+
 ## Code Validation
 
 - I have used the recommended W3C HTML Validator, W3C CSS Jigsaw Validator, and PEP 8 CI Linter to validate all of my project code.
@@ -278,3 +282,8 @@ There are no remaining bugs or known issues that I am aware of at the time of su
 #### **Technical Note**
 
 - **PEP 8 Compliance:** Some lines in the HTML templates and `settings.py` exceed 80 characters to maintain the integrity of functional URLs and CDN links, ensuring the site remains fully operational. Breaking these specific lines would invalidate the URLs and prevent the successful loading of external libraries.
+
+## Testing Summary ##
+
+All tests confirm that the application behaves as expected across all devices, browsers, and user roles. No unresolved bugs remain, and the system meets all functional and non‑functional requirements defined in the project scope.
+
